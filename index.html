@@ -3,24 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aditya Dave engineering portfolio featuring iOS apps, CAD design, 3D printing, embedded systems planning, and prototype work." />
   <title>Aditya Dave | Engineering Portfolio</title>
 
   <style>
     :root {
-      --bg: #0f172a;
-      --bg-soft: #111827;
-      --card: rgba(255, 255, 255, 0.08);
-      --card-solid: #ffffff;
-      --text: #f8fafc;
-      --muted: #cbd5e1;
-      --dark-text: #111827;
-      --dark-muted: #4b5563;
-      --blue: #38bdf8;
-      --blue-dark: #2563eb;
-      --green: #22c55e;
-      --orange: #f97316;
-      --border: rgba(255, 255, 255, 0.16);
-      --shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      --bg: #050816;
+      --bg-2: #0a1024;
+      --panel: rgba(255, 255, 255, 0.075);
+      --panel-strong: rgba(255, 255, 255, 0.12);
+      --paper: #ffffff;
+      --paper-soft: #f7f9fc;
+      --ink: #0d1324;
+      --ink-soft: #5c667a;
+      --text: #f7fbff;
+      --muted: #b9c4d8;
+      --line: rgba(255, 255, 255, 0.14);
+      --line-dark: #e7eaf0;
+      --accent: #7dd3fc;
+      --accent-2: #a78bfa;
+      --accent-3: #34d399;
+      --gold: #f5c76a;
+      --orange: #fb923c;
+      --blue: #60a5fa;
+      --green: #34d399;
+      --purple: #a78bfa;
+      --radius-xl: 34px;
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.32);
+      --shadow-soft: 0 18px 55px rgba(9, 15, 32, 0.13);
     }
 
     * {
@@ -34,10 +46,27 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #f4f7fb;
-      color: var(--dark-text);
-      line-height: 1.6;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at 10% 0%, rgba(125, 211, 252, 0.16), transparent 30%),
+        radial-gradient(circle at 90% 10%, rgba(167, 139, 250, 0.15), transparent 26%),
+        linear-gradient(180deg, #f7f9fc 0%, #eef2f8 100%);
+      color: var(--ink);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(15, 23, 42, 0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(15, 23, 42, 0.035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, black, transparent 72%);
+      z-index: -2;
     }
 
     a {
@@ -46,14 +75,41 @@
 
     .hero {
       min-height: 100vh;
-      background:
-        radial-gradient(circle at top left, rgba(56, 189, 248, 0.28), transparent 32%),
-        radial-gradient(circle at top right, rgba(34, 197, 94, 0.18), transparent 28%),
-        linear-gradient(135deg, #020617, #111827 55%, #1e293b);
       color: var(--text);
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 18% 20%, rgba(125, 211, 252, 0.24), transparent 34%),
+        radial-gradient(circle at 78% 18%, rgba(167, 139, 250, 0.24), transparent 32%),
+        radial-gradient(circle at 64% 80%, rgba(52, 211, 153, 0.14), transparent 28%),
+        linear-gradient(135deg, #030712 0%, #081123 48%, #111827 100%);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      filter: blur(8px);
+      opacity: 0.78;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 520px;
+      height: 520px;
+      right: -210px;
+      top: 160px;
+      background: radial-gradient(circle, rgba(125, 211, 252, 0.16), transparent 66%);
+    }
+
+    .hero::after {
+      width: 420px;
+      height: 420px;
+      left: -170px;
+      bottom: -160px;
+      background: radial-gradient(circle, rgba(245, 199, 106, 0.13), transparent 64%);
     }
 
     .nav {
@@ -63,74 +119,131 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 0;
+      gap: 20px;
+      position: sticky;
+      top: 18px;
+      z-index: 20;
+      padding: 12px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(3, 7, 18, 0.58);
+      backdrop-filter: blur(22px);
+      box-shadow: 0 18px 60px rgba(0, 0, 0, 0.18);
     }
 
     .logo {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: 0.4px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding-left: 8px;
+      font-size: 17px;
+      font-weight: 900;
+      letter-spacing: 0.2px;
+    }
+
+    .logo::before {
+      content: "AD";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      border-radius: 11px;
+      color: #07111f;
+      background: linear-gradient(135deg, var(--accent), var(--gold));
+      font-size: 12px;
+      letter-spacing: 0.8px;
+      box-shadow: 0 0 35px rgba(125, 211, 252, 0.35);
     }
 
     .nav-links {
       display: flex;
-      gap: 24px;
+      gap: 6px;
       align-items: center;
+      flex-wrap: wrap;
     }
 
     .nav-links a {
       color: var(--muted);
       text-decoration: none;
-      font-size: 15px;
-      font-weight: 700;
+      font-size: 14px;
+      font-weight: 800;
+      padding: 10px 13px;
+      border-radius: 999px;
+      transition: color 180ms ease, background 180ms ease, transform 180ms ease;
     }
 
     .nav-links a:hover {
       color: white;
+      background: rgba(255, 255, 255, 0.08);
+      transform: translateY(-1px);
     }
 
     .hero-inner {
       max-width: 1180px;
       width: 100%;
-      margin: auto;
+      min-height: calc(100vh - 96px);
+      margin: 0 auto;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 42px;
+      grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+      gap: 44px;
       align-items: center;
-      padding: 70px 0;
+      padding: 76px 0 54px;
+      position: relative;
+      z-index: 2;
     }
 
     .eyebrow {
       display: inline-flex;
       width: fit-content;
-      padding: 8px 14px;
-      border: 1px solid var(--border);
+      align-items: center;
+      gap: 9px;
+      padding: 9px 14px;
+      border: 1px solid rgba(125, 211, 252, 0.35);
       border-radius: 999px;
-      color: var(--blue);
-      font-weight: 800;
-      font-size: 14px;
-      margin-bottom: 22px;
-      background: rgba(255, 255, 255, 0.06);
+      color: #dff6ff;
+      font-weight: 900;
+      font-size: 13px;
+      margin-bottom: 24px;
+      background: rgba(125, 211, 252, 0.09);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 18px var(--green);
     }
 
     h1 {
-      font-size: clamp(42px, 7vw, 82px);
-      line-height: 0.95;
-      letter-spacing: -2.5px;
-      margin-bottom: 22px;
+      max-width: 880px;
+      font-size: clamp(46px, 7vw, 90px);
+      line-height: 0.92;
+      letter-spacing: -3.6px;
+      margin-bottom: 26px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(120deg, #ffffff, #bae6fd 38%, #ddd6fe 72%, #fde68a);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .hero-text {
       color: var(--muted);
-      max-width: 690px;
-      font-size: 20px;
-      margin-bottom: 32px;
+      max-width: 720px;
+      font-size: 19px;
+      margin-bottom: 34px;
     }
 
     .actions {
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
+      gap: 13px;
       margin-bottom: 34px;
     }
 
@@ -138,84 +251,131 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      padding: 13px 20px;
-      border-radius: 12px;
+      min-height: 48px;
+      padding: 13px 19px;
+      border-radius: 999px;
       text-decoration: none;
-      font-weight: 800;
+      font-weight: 900;
       border: 1px solid transparent;
+      transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     .btn-primary {
-      background: var(--blue);
-      color: #082f49;
+      background: linear-gradient(135deg, #e0f2fe, #7dd3fc 50%, #a78bfa);
+      color: #06101f;
+      box-shadow: 0 18px 50px rgba(96, 165, 250, 0.28);
     }
 
     .btn-secondary {
-      border-color: var(--border);
+      border-color: var(--line);
       color: white;
-      background: rgba(255, 255, 255, 0.06);
+      background: rgba(255, 255, 255, 0.07);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.12);
     }
 
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 14px;
-      max-width: 760px;
+      max-width: 780px;
     }
 
     .stat {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 18px;
+      position: relative;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.075);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px;
+      backdrop-filter: blur(16px);
+    }
+
+    .stat::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent 50%);
+      pointer-events: none;
     }
 
     .stat strong {
       display: block;
       color: white;
-      font-size: 28px;
+      font-size: 31px;
       line-height: 1;
-      margin-bottom: 8px;
+      margin-bottom: 9px;
+      position: relative;
     }
 
     .stat span {
       color: var(--muted);
-      font-size: 14px;
+      font-size: 13.5px;
+      font-weight: 700;
+      position: relative;
     }
 
     .profile-card {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border);
-      border-radius: 28px;
+      position: relative;
+      background:
+        linear-gradient(180deg, rgba(255, 255, 255, 0.14), rgba(255, 255, 255, 0.06)),
+        rgba(255, 255, 255, 0.07);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
       padding: 26px;
       box-shadow: var(--shadow);
-      backdrop-filter: blur(14px);
+      backdrop-filter: blur(22px);
+      overflow: hidden;
+    }
+
+    .profile-card::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background:
+        radial-gradient(circle at top left, rgba(125, 211, 252, 0.25), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(245, 199, 106, 0.16), transparent 30%);
+      pointer-events: none;
+    }
+
+    .profile-top,
+    .mini-list {
+      position: relative;
+      z-index: 2;
     }
 
     .profile-top {
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--line);
       padding-bottom: 22px;
       margin-bottom: 22px;
     }
 
     .avatar {
-      width: 82px;
-      height: 82px;
-      border-radius: 24px;
-      background: linear-gradient(135deg, var(--blue), var(--green));
+      width: 86px;
+      height: 86px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2) 58%, var(--gold));
       color: #020617;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 34px;
-      font-weight: 900;
-      margin-bottom: 16px;
+      font-size: 32px;
+      font-weight: 950;
+      margin-bottom: 18px;
+      box-shadow: 0 24px 60px rgba(125, 211, 252, 0.24);
     }
 
     .profile-card h2 {
       color: white;
-      font-size: 26px;
+      font-size: 28px;
       margin-bottom: 6px;
+      letter-spacing: -0.5px;
     }
 
     .profile-card p {
@@ -228,16 +388,16 @@
     }
 
     .mini-item {
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 15px;
+      background: rgba(255, 255, 255, 0.075);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 16px;
     }
 
     .mini-item strong {
       color: white;
       display: block;
-      margin-bottom: 4px;
+      margin-bottom: 5px;
     }
 
     .mini-item span {
@@ -248,32 +408,36 @@
     main {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 72px 28px;
+      padding: 82px 28px;
+    }
+
+    section {
+      scroll-margin-top: 110px;
     }
 
     .section-heading {
-      margin-bottom: 28px;
+      margin-bottom: 30px;
+      display: grid;
+      gap: 10px;
     }
 
     .section-heading span {
-      color: var(--blue-dark);
-      font-weight: 900;
+      color: #2563eb;
+      font-weight: 950;
       text-transform: uppercase;
-      letter-spacing: 1.5px;
-      font-size: 13px;
+      letter-spacing: 1.8px;
+      font-size: 12px;
     }
 
     .section-heading h2 {
-      font-size: clamp(30px, 5vw, 48px);
-      line-height: 1.05;
-      letter-spacing: -1px;
-      margin-top: 8px;
-      margin-bottom: 12px;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1;
+      letter-spacing: -1.8px;
     }
 
     .section-heading p {
-      color: var(--dark-muted);
-      max-width: 760px;
+      color: var(--ink-soft);
+      max-width: 780px;
       font-size: 17px;
     }
 
@@ -283,111 +447,177 @@
     }
 
     .project-card {
-      background: var(--card-solid);
-      border-radius: 26px;
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(250px, 0.7fr) minmax(0, 1.3fr);
+      background: rgba(255, 255, 255, 0.86);
+      border-radius: var(--radius-xl);
       overflow: hidden;
-      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.1);
-      border: 1px solid #e5e7eb;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      backdrop-filter: blur(18px);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 28px 80px rgba(9, 15, 32, 0.17);
+      border-color: rgba(96, 165, 250, 0.35);
     }
 
     .project-head {
-      padding: 28px;
+      padding: 30px;
       color: white;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 26px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-head::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      border-radius: 999px;
+      right: -88px;
+      bottom: -96px;
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .project-head::after {
+      content: "Featured Project";
+      width: fit-content;
+      position: relative;
+      z-index: 2;
+      order: -1;
+      padding: 7px 11px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 999px;
+      color: rgba(255, 255, 255, 0.86);
+      font-size: 11px;
+      font-weight: 900;
+      letter-spacing: 0.7px;
+      text-transform: uppercase;
     }
 
     .project-head.blue {
-      background: linear-gradient(135deg, #1d4ed8, #38bdf8);
+      background: linear-gradient(145deg, #1d4ed8, #2563eb 52%, #7dd3fc);
     }
 
     .project-head.green {
-      background: linear-gradient(135deg, #047857, #22c55e);
+      background: linear-gradient(145deg, #047857, #059669 52%, #6ee7b7);
     }
 
     .project-head.orange {
-      background: linear-gradient(135deg, #c2410c, #f97316);
+      background: linear-gradient(145deg, #9a3412, #ea580c 52%, #fdba74);
+    }
+
+    .project-head.purple {
+      background: linear-gradient(145deg, #5b21b6, #7c3aed 52%, #c4b5fd);
     }
 
     .project-head h3 {
-      font-size: 30px;
-      margin-bottom: 8px;
+      font-size: clamp(25px, 3vw, 34px);
+      line-height: 1.05;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
     }
 
     .project-head p {
-      color: rgba(255, 255, 255, 0.9);
-      font-weight: 700;
+      color: rgba(255, 255, 255, 0.88);
+      font-weight: 900;
+      position: relative;
+      z-index: 2;
     }
 
     .project-body {
-      padding: 28px;
+      padding: 32px;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 0.92fr 1.08fr;
       gap: 28px;
+      align-items: start;
     }
 
     .project-body h4 {
-      font-size: 17px;
+      font-size: 15px;
       margin-bottom: 10px;
       color: #0f172a;
+      text-transform: uppercase;
+      letter-spacing: 1px;
     }
 
     .project-body p {
-      color: var(--dark-muted);
+      color: var(--ink-soft);
       margin-bottom: 16px;
     }
 
     ul {
-      margin-left: 20px;
-      color: var(--dark-muted);
+      margin-left: 19px;
+      color: var(--ink-soft);
     }
 
     li {
       margin-bottom: 8px;
+      padding-left: 2px;
     }
 
     .tools {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 12px;
+      gap: 9px;
+      margin-top: 16px;
+    }
+
+    .tool,
+    .skill {
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 900;
     }
 
     .tool {
-      background: #eef6ff;
+      background: #f0f7ff;
       color: #1d4ed8;
       border: 1px solid #dbeafe;
-      border-radius: 999px;
       padding: 7px 11px;
-      font-size: 13px;
-      font-weight: 800;
     }
 
     .highlight {
-      background: #ecfdf5;
-      border: 1px solid #bbf7d0;
-      color: #166534;
-      border-radius: 16px;
+      background: linear-gradient(135deg, #f8fafc, #eef6ff);
+      border: 1px solid #dbeafe;
+      color: #1e3a8a;
+      border-radius: 18px;
       padding: 16px;
       margin-top: 16px;
-      font-weight: 800;
+      font-weight: 900;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
     }
 
     .two-col {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 24px;
     }
 
     .card {
-      background: white;
-      border: 1px solid #e5e7eb;
-      border-radius: 24px;
-      padding: 26px;
-      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+      background: rgba(255, 255, 255, 0.88);
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(16px);
     }
 
     .card h3 {
       font-size: 24px;
       margin-bottom: 14px;
+      letter-spacing: -0.6px;
     }
 
     .skill-cloud {
@@ -397,13 +627,11 @@
     }
 
     .skill {
-      background: #f1f5f9;
+      background: linear-gradient(180deg, #ffffff, #f1f5f9);
       border: 1px solid #e2e8f0;
       padding: 9px 12px;
-      border-radius: 999px;
-      font-weight: 800;
       color: #334155;
-      font-size: 14px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.04);
     }
 
     .education-list {
@@ -413,45 +641,52 @@
 
     .education-item {
       padding: 18px;
-      background: #f8fafc;
+      background: linear-gradient(180deg, #ffffff, #f8fafc);
       border: 1px solid #e5e7eb;
-      border-radius: 16px;
+      border-radius: 18px;
     }
 
     .education-item strong {
       display: block;
       font-size: 18px;
       margin-bottom: 4px;
+      color: #0f172a;
     }
 
     .education-item span {
-      color: var(--dark-muted);
-      font-weight: 700;
+      color: var(--ink-soft);
+      font-weight: 800;
     }
 
     .contact-panel {
+      position: relative;
+      overflow: hidden;
       background:
-        radial-gradient(circle at top right, rgba(56, 189, 248, 0.3), transparent 30%),
-        linear-gradient(135deg, #020617, #111827);
+        radial-gradient(circle at top right, rgba(125, 211, 252, 0.26), transparent 32%),
+        radial-gradient(circle at bottom left, rgba(167, 139, 250, 0.18), transparent 32%),
+        linear-gradient(135deg, #030712, #0f172a 68%, #172554);
       color: white;
-      border-radius: 30px;
-      padding: 40px;
+      border-radius: var(--radius-xl);
+      padding: 42px;
       box-shadow: var(--shadow);
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
-      gap: 24px;
+      gap: 28px;
       align-items: center;
+      border: 1px solid var(--line);
     }
 
     .contact-panel h2 {
-      font-size: 42px;
-      line-height: 1.05;
-      margin-bottom: 12px;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1;
+      letter-spacing: -1.6px;
+      margin-bottom: 14px;
     }
 
     .contact-panel p {
       color: var(--muted);
       font-size: 17px;
+      max-width: 680px;
     }
 
     .contact-links {
@@ -461,62 +696,82 @@
 
     .contact-links a {
       display: block;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.085);
+      border: 1px solid var(--line);
       color: white;
       text-decoration: none;
-      border-radius: 16px;
+      border-radius: 17px;
       padding: 15px;
-      font-weight: 800;
+      font-weight: 900;
+      transition: background 180ms ease, transform 180ms ease;
     }
 
     .contact-links a:hover {
       background: rgba(255, 255, 255, 0.14);
+      transform: translateY(-2px);
     }
 
     footer {
       text-align: center;
       padding: 30px;
       color: #64748b;
+      font-weight: 700;
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 980px) {
       .hero-inner,
+      .project-card,
       .project-body,
       .two-col,
       .contact-panel {
         grid-template-columns: 1fr;
       }
 
-      .hero-stats {
-        grid-template-columns: 1fr;
+      .project-head {
+        min-height: 260px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding: 16px;
       }
 
       .nav {
         align-items: flex-start;
-        gap: 16px;
+        border-radius: 26px;
         flex-direction: column;
+        top: 10px;
       }
 
       .nav-links {
-        flex-wrap: wrap;
-        gap: 14px;
+        width: 100%;
       }
 
-      .hero {
-        padding: 20px;
+      .nav-links a {
+        padding: 8px 10px;
+      }
+
+      .hero-inner {
+        padding: 56px 0 36px;
+      }
+
+      h1 {
+        letter-spacing: -2px;
+      }
+
+      .hero-stats {
+        grid-template-columns: 1fr;
       }
 
       main {
-        padding: 50px 20px;
+        padding: 58px 18px;
       }
 
+      .project-body,
+      .card,
       .contact-panel {
-        padding: 28px;
-      }
-
-      .contact-panel h2 {
-        font-size: 32px;
+        padding: 24px;
       }
     }
   </style>
@@ -540,24 +795,24 @@
       <div>
         <div class="eyebrow">Electrical & Computer Engineering Student</div>
 
-        <h1>Building mobile apps, hardware prototypes, and engineering tools.</h1>
+        <h1><span class="gradient-text">Building apps, prototypes, and polished engineering systems.</span></h1>
 
         <p class="hero-text">
-          I am an Electrical and Computer Engineering student with hands-on experience in
-          mobile app development, embedded systems planning, CAD, 3D printing, soldering,
-          testing, and software development.
+          I am an Electrical and Computer Engineering student who likes building apps,
+          prototypes, and hardware projects. I enjoy solving real problems, testing ideas,
+          working collaboratively in teams, and turning rough concepts into working products.
         </p>
 
         <div class="actions">
           <a class="btn btn-primary" href="#projects">View Projects</a>
           <a class="btn btn-secondary" href="mailto:realmwonders36@gmail.com">Email Me</a>
-          <a class="btn btn-secondary" href="https://www.linkedin.com/in/aditya-dave-2b23a8270/" target="_blank">LinkedIn</a>
+          <a class="btn btn-secondary" href="https://www.linkedin.com/in/aditya-dave-2b23a8270/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
 
         <div class="hero-stats">
           <div class="stat">
-            <strong>2</strong>
-            <span>Published app projects</span>
+            <strong>4</strong>
+            <span>Engineering and app projects</span>
           </div>
 
           <div class="stat">
@@ -567,7 +822,7 @@
 
           <div class="stat">
             <strong>$400</strong>
-            <span>Estimated supply cost reduction through Chef’s Ledger</span>
+            <span>Estimated supply cost reduction through Chef's Ledger</span>
           </div>
         </div>
       </div>
@@ -582,7 +837,7 @@
         <div class="mini-list">
           <div class="mini-item">
             <strong>Current Focus</strong>
-            <span>SwiftUI apps, CAD modeling, 3D printing, electronics layout</span>
+            <span>SwiftUI apps, CAD modeling, 3D printing, Arduino electronics layout</span>
           </div>
 
           <div class="mini-item">
@@ -606,47 +861,52 @@
         <h2>Projects</h2>
         <p>
           These projects show my experience across iOS development, hardware design,
-          CAD modeling, cloud-backed workflows, inventory systems, and engineering problem solving.
+          CAD modeling, cloud-backed workflows, inventory systems,
+          and engineering problem solving.
         </p>
       </div>
 
       <div class="project-grid">
         <article class="project-card">
           <div class="project-head orange">
-            <h3>Obi-Wan Lightsaber Hilt and Electronics System</h3>
-            <p>In progress, June 2026</p>
+            <div>
+              <h3>Obi-Wan Lightsaber Hilt and Electronics System</h3>
+              <p>In progress, June 2026</p>
+            </div>
           </div>
 
           <div class="project-body">
             <div>
               <h4>Overview</h4>
               <p>
-                I designed a modular Obi-Wan-style lightsaber hilt with a 1.2-inch hollow chamber
-                for electronics. The project combines CAD modeling, printable mechanical design,
-                and internal electronics planning.
+                I designed an Obi-Wan-style lightsaber hilt with a 1.2-inch hollow electronics
+                chamber by modeling modular sections in FreeCAD. The project combines CAD
+                modeling, 3D-print preparation, and internal electronics planning.
               </p>
 
               <div class="highlight">
-                Focus: modular design, hidden joints, electronics layout, and 3D-print readiness.
+                Focus: modular hilt design, connector tolerances, electronics layout, and Creality K2 print readiness.
               </div>
             </div>
 
             <div>
               <h4>What I Built</h4>
               <ul>
-                <li>Designed a modular hilt in FreeCAD</li>
-                <li>Created hidden peg-and-socket joints</li>
-                <li>Split the model into printable modules for Bambu A1 printing</li>
-                <li>Planned layout for Proffieboard, LED strips, Li-ion battery, buttons, and wiring</li>
-                <li>Worked through CAD tolerances and hardware fit constraints</li>
+                <li>Designed a hilt with a 1.2-inch hollow electronics chamber by modeling modular sections in FreeCAD</li>
+                <li>Prepared the model for Creality K2 printing by splitting the hilt into printable modules</li>
+                <li>Adjusted connector tolerances for print fit and assembly</li>
+                <li>Planned the internal layout for an Arduino Nano, LED strips, buttons, and wiring</li>
+                <li>Accounted for soldering access, electronics clearance, and hardware fit constraints</li>
               </ul>
 
               <div class="tools">
                 <span class="tool">FreeCAD</span>
                 <span class="tool">3D Printing</span>
-                <span class="tool">Proffieboard</span>
+                <span class="tool">Creality K2</span>
+                <span class="tool">Arduino Nano</span>
                 <span class="tool">LED Strips</span>
-                <span class="tool">Li-ion Battery</span>
+                <span class="tool">Soldering</span>
+                <span class="tool">Buttons</span>
               </div>
             </div>
           </div>
@@ -654,15 +914,17 @@
 
         <article class="project-card">
           <div class="project-head green">
-            <h3>Chef’s Ledger</h3>
-            <p>Published, November 2025</p>
+            <div>
+              <h3>Chef's Ledger</h3>
+              <p>Published, November 2025</p>
+            </div>
           </div>
 
           <div class="project-body">
             <div>
               <h4>Overview</h4>
               <p>
-                Chef’s Ledger is a published iOS app for inventory tracking, grocery planning,
+                Chef's Ledger is a published iOS app for inventory tracking, grocery planning,
                 receipt capture, reporting, and PDF export. It helps kitchen teams track supplies,
                 expenses, low-stock items, and expiration dates.
               </p>
@@ -698,8 +960,10 @@
 
         <article class="project-card">
           <div class="project-head blue">
-            <h3>Odontiv</h3>
-            <p>Published, April 2026</p>
+            <div>
+              <h3>Odontiv</h3>
+              <p>Published, April 2026</p>
+            </div>
           </div>
 
           <div class="project-body">
@@ -742,7 +1006,7 @@
       </div>
     </section>
 
-    <section id="skills" style="margin-top: 76px;">
+    <section id="skills" style="margin-top: 86px;">
       <div class="section-heading">
         <span>Technical Profile</span>
         <h2>Skills</h2>
@@ -774,12 +1038,13 @@
           <div class="skill-cloud">
             <span class="skill">FreeCAD</span>
             <span class="skill">3D Printing</span>
-            <span class="skill">Bambu A1</span>
+            <span class="skill">Creality K2</span>
             <span class="skill">Soldering</span>
             <span class="skill">Testing</span>
             <span class="skill">Electronics Layout</span>
             <span class="skill">LED Strips</span>
-            <span class="skill">Li-ion Batteries</span>
+            <span class="skill">Arduino Nano</span>
+            <span class="skill">Buttons</span>
             <span class="skill">Embedded Systems</span>
             <span class="skill">Hardware Prototyping</span>
           </div>
@@ -787,7 +1052,7 @@
       </div>
     </section>
 
-    <section id="education" style="margin-top: 76px;">
+    <section id="education" style="margin-top: 86px;">
       <div class="section-heading">
         <span>Academic Background</span>
         <h2>Education</h2>
@@ -804,12 +1069,12 @@
           <div class="education-list">
             <div class="education-item">
               <strong>De Anza College</strong>
-              <span>GPA: 4.000 | Dean’s List</span>
+              <span>June 2026 to Present | GPA: 4.000 | Dean's List</span>
             </div>
 
             <div class="education-item">
               <strong>Ohlone College</strong>
-              <span>GPA: 4.000 | Dean’s List</span>
+              <span>June 2026 to Present | GPA: 4.000 | Dean's List</span>
             </div>
 
             <div class="education-item">
@@ -825,7 +1090,6 @@
           <ul>
             <li>Calculus I, II, and III</li>
             <li>Physics for Scientists and Engineers: Mechanics</li>
-            <li>Discrete Mathematics</li>
             <li>Introduction to Statistics</li>
             <li>Object-Oriented Programming in C++</li>
             <li>Intermediate C++</li>
@@ -836,7 +1100,7 @@
       </div>
     </section>
 
-    <section id="experience" style="margin-top: 76px;">
+    <section id="experience" style="margin-top: 86px;">
       <div class="section-heading">
         <span>Experience</span>
         <h2>Leadership and Responsibility</h2>
@@ -851,14 +1115,14 @@
         <p><strong>Lifeguard and Water Safety Instructor</strong> | May 2023 to Present</p>
 
         <ul>
-          <li>Safeguard 100+ patrons per shift through monitoring, hazard recognition, and emergency response</li>
-          <li>Train new staff on scanning patterns, rotation procedures, and emergency action steps</li>
-          <li>Teach students ages 3+ and adapt instruction based on skill level and progress</li>
+          <li>Protect 100+ patrons per shift through zone scanning, hazard recognition, rule enforcement, and emergency response</li>
+          <li>Train new staff on scanning patterns, rotation procedures, emergency steps, and pool safety expectations</li>
+          <li>Teach swim skills to students ages 3+ by adjusting instruction based on age, ability, and progress</li>
         </ul>
       </div>
     </section>
 
-    <section style="margin-top: 76px;">
+    <section style="margin-top: 86px;">
       <div class="section-heading">
         <span>Certifications</span>
         <h2>Additional Training</h2>
@@ -885,12 +1149,22 @@
           </ul>
         </div>
       </div>
+
+      <div class="card" style="margin-top: 24px;">
+        <h3>Scholarships</h3>
+        <ul>
+          <li>BGP+I Alumni</li>
+          <li>Cargill Memorial</li>
+          <li>League of Volunteers</li>
+          <li>Rich Swift Athletic</li>
+        </ul>
+      </div>
     </section>
 
-    <section id="contact" style="margin-top: 76px;">
+    <section id="contact" style="margin-top: 86px;">
       <div class="contact-panel">
         <div>
-          <h2>Let’s connect.</h2>
+          <h2>Let's connect.</h2>
           <p>
             I am interested in engineering teams working on embedded systems,
             app development, hardware prototyping, and practical software tools.
@@ -899,14 +1173,15 @@
 
         <div class="contact-links">
           <a href="mailto:realmwonders36@gmail.com">realmwonders36@gmail.com</a>
-          <a href="https://www.linkedin.com/in/aditya-dave-2b23a8270/" target="_blank">LinkedIn Profile</a>
+          <a href="tel:5106406465">510-640-6465</a>
+          <a href="https://www.linkedin.com/in/aditya-dave-2b23a8270/" target="_blank" rel="noopener">LinkedIn Profile</a>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    © 2026 Aditya Dave. All rights reserved.
+    &copy; 2026 Aditya Dave. All rights reserved.
   </footer>
 </body>
 </html>
