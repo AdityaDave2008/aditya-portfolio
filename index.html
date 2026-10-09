@@ -2,386 +2,139 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Aditya Dave is an Electrical and Computer Engineering student building software, AI, embedded hardware, and product prototypes." />
-  <meta name="theme-color" content="#07111f" />
-  <title>Aditya Dave | ECE + Software + AI</title>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aditya Dave's portfolio. Software, AI research, and hands-on engineering projects.">
+  <title>Aditya Dave | Portfolio</title>
   <style>
     :root {
-      --bg: #07111f;
-      --bg2: #0b1728;
-      --card: rgba(13, 29, 48, 0.78);
-      --card-solid: #0d1d30;
-      --text: #ecf4ff;
-      --muted: #8fa7c1;
-      --line: rgba(154, 181, 211, 0.16);
-      --line2: rgba(154, 181, 211, 0.28);
-      --accent: #6ee7f9;
-      --accent2: #7c9cff;
-      --green: #67e8a5;
-      --amber: #f8cf75;
-      --rose: #ff8aa1;
-      --shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
-      --radius: 22px;
-      --max: 1180px;
+      --bg: #07111f; --card: #0d1d30; --text: #ecf4ff;
+      --muted: #9cb1c9; --line: #25384b; --accent: #6ee7f9;
+      --green: #67e8a5; --shadow: 0 18px 55px #0006;
     }
-
     html[data-theme="light"] {
-      --bg: #f7faff;
-      --bg2: #edf4fb;
-      --card: rgba(255, 255, 255, 0.88);
-      --card-solid: #ffffff;
-      --text: #102038;
-      --muted: #52677f;
-      --line: rgba(50, 79, 109, 0.12);
-      --line2: rgba(50, 79, 109, 0.22);
-      --shadow: 0 20px 55px rgba(45, 72, 101, 0.12);
+      --bg: #f6f9ff; --card: #ffffff; --text: #17283d;
+      --muted: #52677f; --line: #d6e0eb; --accent: #146b88;
+      --green: #087849; --shadow: 0 18px 45px #25486918;
     }
-
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
-
     body {
-      margin: 0;
-      min-height: 100vh;
-      overflow-x: hidden;
-      color: var(--text);
-      background:
-        radial-gradient(circle at 12% 12%, rgba(110, 231, 249, 0.10), transparent 28rem),
-        radial-gradient(circle at 88% 22%, rgba(124, 156, 255, 0.10), transparent 30rem),
-        var(--bg);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0; color: var(--text); background: var(--bg);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       line-height: 1.6;
     }
-
     body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      pointer-events: none;
-      opacity: 0.3;
-      background-image:
-        linear-gradient(var(--line) 1px, transparent 1px),
-        linear-gradient(90deg, var(--line) 1px, transparent 1px);
-      background-size: 44px 44px;
-      mask-image: linear-gradient(to bottom, #000, transparent 72%);
+      content: ""; position: fixed; inset: 0; pointer-events: none; z-index: -1;
+      background: radial-gradient(circle at 12% 6%, #6ee7f91c, transparent 34rem),
+                  radial-gradient(circle at 92% 18%, #7c9cff17, transparent 32rem);
     }
-
     a { color: inherit; text-decoration: none; }
-    button { font: inherit; color: inherit; }
-    .container { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
-
-    .nav-wrap {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(18px);
-      background: color-mix(in srgb, var(--bg) 80%, transparent);
-      border-bottom: 1px solid var(--line);
+    button { font: inherit; }
+    .container { width: min(1160px, calc(100% - 36px)); margin: auto; }
+    .nav-wrap { position: sticky; top: 0; z-index: 30; background: var(--bg); border-bottom: 1px solid var(--line); }
+    nav { display: flex; align-items: center; justify-content: space-between; gap: 18px; min-height: 72px; }
+    .brand { font-weight: 800; display: flex; align-items: center; gap: 12px; }
+    .brand-mark { border: 1px solid var(--line); border-radius: 12px; padding: 7px 10px; color: var(--accent); }
+    .nav-links { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .nav-links a, .theme-button { color: var(--muted); padding: 8px 5px; }
+    .nav-links a:hover { color: var(--text); }
+    .theme-button { background: none; border: 1px solid var(--line); border-radius: 10px; cursor: pointer; padding: 7px 11px; }
+    .hero { padding: 115px 0 90px; }
+    .hero-grid { display: grid; grid-template-columns: 1.3fr .7fr; align-items: center; gap: 60px; }
+    .eyebrow { color: var(--accent); font-size: .82rem; font-weight: 700; letter-spacing: .04em; }
+    h1 { font-size: clamp(3.5rem, 8vw, 7rem); line-height: .98; letter-spacing: -.06em; margin: 14px 0 24px; }
+    h1 span { color: var(--muted); display: block; }
+    .hero-copy { color: var(--muted); font-size: 1.14rem; max-width: 700px; }
+    .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+    .button { display: inline-block; border: 1px solid var(--line); padding: 11px 17px; border-radius: 12px; font-weight: 700; background: var(--card); }
+    .button:hover { border-color: var(--accent); }
+    .button.primary { background: var(--text); color: var(--bg); }
+    .button.small { padding: 8px 12px; font-size: .87rem; }
+    .panel, .project-card, .experience-card, .skill-card {
+      background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+      padding: 24px; box-shadow: var(--shadow);
     }
-
-    nav {
-      min-height: 72px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-    }
-
-    .brand-mark {
-      width: 38px;
-      height: 38px;
-      display: grid;
-      place-items: center;
-      border: 1px solid var(--line2);
-      border-radius: 12px;
-      background: linear-gradient(145deg, rgba(110, 231, 249, 0.13), rgba(124, 156, 255, 0.08));
-      color: var(--accent);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    .nav-links a, .theme-button {
-      padding: 9px 12px;
-      border: 1px solid transparent;
-      border-radius: 11px;
-      background: transparent;
-      color: var(--muted);
-      transition: 160ms ease;
-    }
-
-    .nav-links a:hover, .theme-button:hover {
-      color: var(--text);
-      border-color: var(--line);
-      background: var(--card);
-    }
-    .theme-button { cursor: pointer; }
-
-    .hero {
-      min-height: 78vh;
-      display: grid;
-      align-items: center;
-      padding: 92px 0 62px;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.25fr 0.75fr;
-      gap: 64px;
-      align-items: center;
-    }
-
-    .eyebrow, .mono {
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      font-size: 0.76rem;
-      color: var(--accent);
-    }
-
-    .hero h1 {
-      margin: 14px 0 18px;
-      max-width: 900px;
-      font-size: clamp(3.2rem, 7.5vw, 7.4rem);
-      line-height: 0.93;
-      letter-spacing: -0.065em;
-    }
-    .hero h1 span { display: block; color: var(--muted); font-weight: 620; }
-    .hero-copy { max-width: 760px; margin: 0; color: var(--muted); font-size: clamp(1.02rem, 2vw, 1.18rem); }
-    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px; }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      min-height: 46px;
-      padding: 0 16px;
-      border: 1px solid var(--line2);
-      border-radius: 12px;
-      background: var(--card);
-      font-weight: 760;
-      transition: 160ms ease;
-      cursor: pointer;
-    }
-    .button:hover { transform: translateY(-2px); border-color: var(--accent); }
-    .button.primary { background: var(--text); color: var(--bg); border-color: var(--text); }
-    .button.ghost { color: var(--muted); }
-    .button.small { min-height: 38px; padding: 0 12px; font-size: 0.9rem; }
-
-    .signal-card {
-      border: 1px solid var(--line2);
-      border-radius: 28px;
-      padding: 22px;
-      background: linear-gradient(145deg, var(--card), color-mix(in srgb, var(--card-solid) 88%, transparent));
-      box-shadow: var(--shadow);
-    }
-    .signal-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding-bottom: 18px; border-bottom: 1px solid var(--line); }
-    .live-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 7px rgba(103, 232, 165, 0.11); }
-    .signal-list { list-style: none; margin: 0; padding: 12px 0 0; }
-    .signal-list li { display: flex; justify-content: space-between; gap: 18px; padding: 13px 0; border-bottom: 1px solid var(--line); color: var(--muted); }
-    .signal-list li:last-child { border-bottom: 0; }
-    .signal-list strong { color: var(--text); text-align: right; }
-
-    .proof-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--card);
-    }
-    .proof-item { padding: 22px; border-right: 1px solid var(--line); }
-    .proof-item:last-child { border-right: 0; }
-    .proof-item .number { font-size: 1.75rem; font-weight: 850; letter-spacing: -0.04em; }
-    .proof-item .label { margin-top: 3px; color: var(--muted); font-size: 0.9rem; }
-
-    section { padding: 100px 0; }
-    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 34px; }
-    .section-head h2 { margin: 8px 0 0; font-size: clamp(2rem, 4vw, 3.6rem); line-height: 1; letter-spacing: -0.05em; }
-    .section-head p { max-width: 610px; margin: 0; color: var(--muted); }
-
-    .about-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 28px; }
-    .panel, .experience-card, .skill-card {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--card);
-      padding: 26px;
-    }
-    .panel h3, .experience-card h3, .skill-card h3 { margin: 0 0 10px; }
-    .panel p, .experience-card p, .skill-card p { margin: 0; color: var(--muted); }
-
-    .focus-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-top: 20px; }
-    .focus-item { padding: 15px; border: 1px solid var(--line); border-radius: 14px; background: color-mix(in srgb, var(--card-solid) 65%, transparent); }
-    .focus-item strong { display: block; margin-bottom: 4px; }
-    .focus-item span { color: var(--muted); font-size: 0.91rem; }
-
-    .filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 24px; }
-    .filter {
-      padding: 9px 13px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      background: var(--card);
-      color: var(--muted);
-      cursor: pointer;
-    }
-    .filter:hover, .filter.active { color: var(--bg); background: var(--text); border-color: var(--text); }
-
-    .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
-    .project-card {
-      position: relative;
-      min-height: 380px;
-      display: flex;
-      flex-direction: column;
-      overflow: hidden;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--card);
-      padding: 24px;
-      transition: 180ms ease;
-    }
-    .project-card::before { content: ""; position: absolute; inset: 0 0 auto; height: 2px; background: linear-gradient(90deg, transparent, var(--card-accent, var(--accent)), transparent); }
-    .project-card:hover { transform: translateY(-4px); border-color: var(--line2); box-shadow: var(--shadow); }
-    .project-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
-    .project-kicker { margin-bottom: 7px; color: var(--muted); font-size: 0.84rem; }
-    .project-card h3 { margin: 0; font-size: 1.65rem; line-height: 1.05; letter-spacing: -0.035em; }
-    .status { white-space: nowrap; padding: 6px 9px; border: 1px solid var(--line2); border-radius: 999px; color: var(--accent); font: 700 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; text-transform: uppercase; }
-    .project-summary { margin: 18px 0; color: var(--muted); }
-    .stage-box { margin-bottom: 16px; padding: 13px 14px; border: 1px solid var(--line); border-radius: 13px; background: color-mix(in srgb, var(--card-solid) 72%, transparent); }
-    .stage-label { margin-bottom: 4px; color: var(--muted); font-size: 0.79rem; }
-    .stage-value { font-weight: 740; }
-    .tags { display: flex; gap: 7px; flex-wrap: wrap; }
-    .tag { padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 0.76rem; }
-    .project-bottom { margin-top: auto; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; gap: 15px; }
-    .project-report-action { margin-top: 18px; }
-    .experience-report-action { margin-top: 16px; }
-    .next-step { max-width: 72%; color: var(--muted); font-size: 0.87rem; }
-    .details-button { border: 0; background: none; color: var(--accent); font-weight: 760; cursor: pointer; }
-
-    .roadmap-shell { display: grid; grid-template-columns: 0.75fr 1.25fr; gap: 30px; }
-    .roadmap-intro { position: sticky; top: 110px; align-self: start; }
-    .roadmap-intro h3 { margin: 10px 0 12px; font-size: 2rem; letter-spacing: -0.04em; }
-    .roadmap-intro p { color: var(--muted); }
-    .timeline { position: relative; }
-    .timeline::before { content: ""; position: absolute; left: 18px; top: 10px; bottom: 10px; width: 1px; background: var(--line2); }
-    .timeline-item { position: relative; padding: 0 0 28px 58px; }
-    .timeline-dot { position: absolute; left: 11px; top: 7px; width: 15px; height: 15px; border-radius: 50%; background: var(--bg); border: 3px solid var(--muted); }
-    .timeline-item.current .timeline-dot { border-color: var(--green); box-shadow: 0 0 0 6px rgba(103, 232, 165, 0.08); }
-    .timeline-item.target .timeline-dot { border-color: var(--accent); }
-    .timeline-date { color: var(--accent); font: 700 0.78rem ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-    .timeline-item h4 { margin: 4px 0 6px; font-size: 1.12rem; }
-    .timeline-item p { margin: 0; color: var(--muted); }
-
-    .experience-grid, .skills-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; }
-    .experience-card .date { margin-bottom: 10px; color: var(--accent); font: 700 0.76rem ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; text-transform: uppercase; letter-spacing: 0.07em; }
-    .skill-list { display: flex; gap: 7px; flex-wrap: wrap; margin-top: 16px; }
-
-    .contact-card {
-      display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      align-items: end;
-      gap: 40px;
-      padding: clamp(28px, 5vw, 56px);
-      border: 1px solid var(--line2);
-      border-radius: 30px;
-      background: radial-gradient(circle at 80% 20%, rgba(110, 231, 249, 0.13), transparent 20rem), var(--card);
-    }
-    .contact-card h2 { margin: 8px 0 14px; font-size: clamp(2.5rem, 5vw, 5rem); line-height: 0.95; letter-spacing: -0.055em; }
-    .contact-card p { margin: 0; color: var(--muted); }
-    .contact-actions { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
-
-    footer { padding: 40px 0 48px; color: var(--muted); font-size: 0.9rem; }
-    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; flex-wrap: wrap; }
-
-    dialog {
-      width: min(760px, calc(100% - 28px));
-      max-height: 88vh;
-      overflow: auto;
-      padding: 0;
-      border: 1px solid var(--line2);
-      border-radius: 24px;
-      background: var(--card-solid);
-      color: var(--text);
-      box-shadow: var(--shadow);
-    }
-    dialog::backdrop { background: rgba(1, 6, 13, 0.72); backdrop-filter: blur(5px); }
-    .dialog-inner { padding: 26px; }
-    .dialog-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 20px; }
-    .dialog-head h3 { margin: 6px 0 0; font-size: 2rem; }
-    .close-button { width: 38px; height: 38px; border: 1px solid var(--line); border-radius: 50%; background: var(--card); color: var(--muted); cursor: pointer; }
-    .dialog-summary { margin: 18px 0 22px; color: var(--muted); }
-    .dialog-section { padding: 18px 0; border-top: 1px solid var(--line); }
-    .dialog-section h4 { margin: 0 0 10px; color: var(--accent); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.08em; }
-    .roadmap-row { display: grid; grid-template-columns: 105px 1fr auto; gap: 13px; align-items: start; padding: 10px 0; border-bottom: 1px solid var(--line); }
-    .roadmap-row time { color: var(--muted); font-size: 0.78rem; font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
-    .roadmap-state { color: var(--muted); font-size: 0.7rem; text-transform: uppercase; }
-    .roadmap-state.now { color: var(--green); }
-    .roadmap-state.next { color: var(--accent); }
-    .dialog-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
-
-    .reveal { opacity: 0; transform: translateY(18px); transition: 560ms ease; }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-
+    .panel h3, .experience-card h3, .skill-card h3 { margin-top: 0; }
+    .panel p, .experience-card p, .skill-card p { color: var(--muted); }
+    .signal-list { list-style: none; padding: 0; margin: 12px 0 0; }
+    .signal-list li { padding: 12px 0; border-bottom: 1px solid var(--line); display: flex; justify-content: space-between; gap: 14px; }
+    .signal-list li:last-child { border: 0; }
+    .signal-list span { color: var(--muted); }
+    .signal-list strong { text-align: right; }
+    .proof-strip { display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: 20px; overflow: hidden; }
+    .proof { padding: 20px; border-right: 1px solid var(--line); }
+    .proof:last-child { border: 0; }
+    .proof strong { display: block; font-size: 1.55rem; }
+    .proof span { color: var(--muted); font-size: .85rem; }
+    section { padding: 85px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 26px; }
+    h2 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.1; letter-spacing: -.04em; margin: 7px 0 0; }
+    .section-head p { max-width: 520px; color: var(--muted); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .focus-list { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 22px; }
+    .focus-item { padding: 13px; border: 1px solid var(--line); border-radius: 12px; }
+    .focus-item strong { display: block; }
+    .focus-item span { color: var(--muted); font-size: .87rem; }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 22px; }
+    .filter { border: 1px solid var(--line); border-radius: 30px; background: var(--card); color: var(--muted); padding: 8px 14px; cursor: pointer; }
+    .filter.active { background: var(--text); color: var(--bg); }
+    .project-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .project-card { display: flex; flex-direction: column; gap: 15px; min-height: 325px; border-top: 3px solid var(--project-color, var(--accent)); }
+    .project-top { display: flex; justify-content: space-between; gap: 15px; }
+    .project-top h3 { font-size: 1.5rem; line-height: 1.15; margin: 5px 0; }
+    .project-kicker { font-size: .8rem; color: var(--muted); }
+    .status { font-size: .72rem; color: var(--accent); white-space: nowrap; }
+    .project-summary, .stage { color: var(--muted); margin: 0; }
+    .tags { display: flex; flex-wrap: wrap; gap: 7px; }
+    .tag { border: 1px solid var(--line); border-radius: 20px; padding: 4px 9px; color: var(--muted); font-size: .78rem; }
+    .project-bottom { margin-top: auto; display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+    .details-button { border: 0; background: none; color: var(--accent); font-weight: 700; cursor: pointer; }
+    .plan-grid, .experience-grid, .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .plan-card { padding: 23px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; }
+    .plan-card span, .date { font-size: .8rem; color: var(--accent); font-weight: 700; }
+    .plan-card h3 { margin: 7px 0; }
+    .plan-card p { color: var(--muted); margin: 0; }
+    .skill-card .tags { margin-top: 15px; }
+    .contact-card { padding: 35px; background: var(--card); border: 1px solid var(--line); border-radius: 25px; }
+    footer { border-top: 1px solid var(--line); padding: 22px 0 40px; color: var(--muted); }
+    .footer-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
+    dialog { border: 1px solid var(--line); border-radius: 22px; background: var(--card); color: var(--text); width: min(740px, calc(100% - 24px)); max-height: 88vh; overflow: auto; padding: 24px; }
+    dialog::backdrop { background: #000b; }
+    .dialog-head { display: flex; justify-content: space-between; align-items: start; gap: 16px; }
+    .close-button { background: none; border: 1px solid var(--line); border-radius: 10px; padding: 4px 11px; font-size: 1.5rem; color: var(--text); cursor: pointer; }
+    .dialog-section { padding: 16px 0; border-top: 1px solid var(--line); }
+    .dialog-section h4 { margin: 0 0 9px; color: var(--accent); }
+    .dialog-section p { margin: 7px 0; }
+    .step { border-bottom: 1px solid var(--line); padding: 8px 0; }
+    .muted { color: var(--muted); }
     @media (max-width: 900px) {
-      .hero-grid, .about-grid, .roadmap-shell, .contact-card { grid-template-columns: 1fr; }
-      .proof-strip { grid-template-columns: repeat(2, 1fr); }
-      .project-grid { grid-template-columns: 1fr; }
-      .experience-grid, .skills-grid { grid-template-columns: 1fr 1fr; }
-      .roadmap-intro { position: static; }
-      .contact-actions { justify-content: flex-start; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; }
+      .plan-grid, .experience-grid, .skills-grid { grid-template-columns: 1fr 1fr; }
     }
-
     @media (max-width: 650px) {
-      .container { width: min(calc(100% - 24px), var(--max)); }
       .nav-links a:not(.nav-cta) { display: none; }
-      .hero { min-height: auto; padding-top: 68px; }
-      .hero h1 { font-size: clamp(3rem, 15vw, 5rem); }
-      .proof-strip, .focus-list, .experience-grid, .skills-grid { grid-template-columns: 1fr; }
-      .proof-item { border-right: 0; border-bottom: 1px solid var(--line); }
-      .section-head { align-items: flex-start; flex-direction: column; }
-      section { padding: 76px 0; }
-      .roadmap-row { grid-template-columns: 1fr; gap: 4px; }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * { scroll-behavior: auto !important; transition: none !important; }
-      .reveal { opacity: 1; transform: none; }
+      .hero { padding: 65px 0; }
+      .hero-grid, .about-grid, .project-grid, .plan-grid, .experience-grid, .skills-grid, .focus-list { grid-template-columns: 1fr; }
+      .proof-strip { grid-template-columns: 1fr 1fr; }
+      .proof:nth-child(2) { border-right: 0; }
+      .section-head { align-items: start; flex-direction: column; }
+      section { padding: 60px 0; }
     }
   </style>
 </head>
-
 <body>
   <header class="nav-wrap">
     <nav class="container">
-      <a class="brand" href="#top">
-        <span class="brand-mark">AD</span>
-        <span>Aditya Dave</span>
-      </a>
+      <a class="brand" href="#top"><span class="brand-mark">AD</span>Aditya Dave</a>
       <div class="nav-links">
-        <a href="#work">Work</a>
-        <a href="#roadmap">Roadmap</a>
+        <a href="#work">Projects</a>
+        <a href="#plan">Plan</a>
         <a href="#education">Education</a>
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a class="nav-cta" href="#contact">Contact</a>
-        <button class="theme-button" id="themeToggle" type="button" aria-label="Toggle color theme">◐</button>
+        <button class="theme-button" id="themeToggle" type="button" aria-label="Switch color theme">◐</button>
       </div>
     </nav>
   </header>
@@ -389,81 +142,62 @@
   <main>
     <section class="hero" id="top">
       <div class="container hero-grid">
-        <div class="reveal">
-          <div class="eyebrow">Electrical + Computer Engineering / Software / AI</div>
-          <h1>I build systems <span>from idea to prototype.</span></h1>
-          <p class="hero-copy">
-            I’m Aditya Dave, an Electrical &amp; Computer Engineering student building across software, AI, human-computer interaction, and physical prototyping. I focus on useful systems, fast iteration, and documenting the path from problem to working product.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#work">See what I’m building ↘</a>
-
-            <a
-              class="button ghost"
-              id="resumeLink"
-              href="https://docs.google.com/document/d/1Lxl7qp5xESJxLWNhlzs0SuEl1x2Wj7KpKTAzbSWz_LQ/edit?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-            >Resume</a>
-
-            <a class="button ghost" href="https://github.com/AdityaDave2008" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <div>
+          <div class="eyebrow">Electrical and Computer Engineering | Software | AI</div>
+          <h1>I like building things <span>that people can actually use.</span></h1>
+          <p class="hero-copy">I'm Aditya. I study electrical and computer engineering, and I enjoy building apps, trying new hardware ideas, and figuring out how AI can be more useful and reliable. This site is where I share what I've made and what I'm working on.</p>
+          <div class="actions">
+            <a class="button primary" href="#work">My projects</a>
+            <a class="button" href="https://docs.google.com/document/d/1Lxl7qp5xESJxLWNhlzs0SuEl1x2Wj7KpKTAzbSWz_LQ/edit?usp=sharing" target="_blank" rel="noopener noreferrer">Resume</a>
+            <a class="button" href="https://github.com/AdityaDave2008" target="_blank" rel="noopener noreferrer">GitHub</a>
           </div>
         </div>
-
-        <aside class="signal-card reveal">
-          <div class="signal-head">
-            <div>
-              <div class="mono">Current signal</div>
-              <strong>Building now</strong>
-            </div>
-            <span class="live-dot"></span>
-          </div>
+        <aside class="panel">
+          <div class="eyebrow">What I'm doing</div>
           <ul class="signal-list">
-            <li><span>TAPELLE</span><strong>User research → prototype</strong></li>
-            <li><span>KairoAI</span><strong>Architecture → MVP</strong></li>
-            <li><span>ClearPolicy</span><strong>Research completed · report available</strong></li>
-            <li><span>Fall focus</span><strong>DSA + Linear Algebra + E&amp;M</strong></li>
+            <li><span>TAPELLE</span><strong>Keyboard research and prototypes</strong></li>
+            <li><span>KairoAI</span><strong>Working on the first version</strong></li>
+            <li><span>ClearPolicy</span><strong>Research finished, paper available</strong></li>
+            <li><span>School</span><strong>Data structures, linear algebra, physics</strong></li>
           </ul>
         </aside>
       </div>
     </section>
 
-    <div class="container reveal">
+    <div class="container">
       <div class="proof-strip">
-        <div class="proof-item"><div class="number">2</div><div class="label">Apps shipped to the App Store</div></div>
-        <div class="proof-item"><div class="number">AI</div><div class="label">Reliability and policy research</div></div>
-        <div class="proof-item"><div class="number">HW</div><div class="label">CAD, 3D printing, Arduino, soldering</div></div>
-        <div class="proof-item"><div class="number">ECE</div><div class="label">Hardware + software systems focus</div></div>
+        <div class="proof"><strong>2</strong><span>Apps on the App Store</span></div>
+        <div class="proof"><strong>3.92</strong><span>College GPA</span></div>
+        <div class="proof"><strong>AI</strong><span>Research on trustworthy answers</span></div>
+        <div class="proof"><strong>ECE</strong><span>Software and hands-on hardware</span></div>
       </div>
     </div>
 
     <section id="about">
       <div class="container">
-        <div class="section-head reveal">
-          <div><div class="eyebrow">About</div><h2>Engineering breadth, with a product mindset.</h2></div>
-          <p>My strongest work sits where software meets a real user or a physical system. I use small, testable iterations to move from research to requirements, implementation, validation, and the next version.</p>
+        <div class="section-head">
+          <div><div class="eyebrow">About</div><h2>A little about me</h2></div>
+          <p>I learn the most when I get to try something, see what works, fix what doesn't, and try again.</p>
         </div>
-
         <div class="about-grid">
-          <article class="panel reveal">
-            <h3>Academic focus</h3>
-            <p>I’m studying Electrical &amp; Computer Engineering across De Anza College and Ohlone College. My Fall 2026 focus includes Data Abstractions &amp; Structures, Linear Algebra, and Physics: Electricity &amp; Magnetism.</p>
+          <article class="panel">
+            <h3>What I'm studying</h3>
+            <p>I'm studying electrical and computer engineering at De Anza College and Ohlone College. This fall I'm taking data structures, linear algebra, and electricity and magnetism.</p>
             <div class="focus-list">
-              <div class="focus-item"><strong>Software systems</strong><span>Data structures, app architecture, state, reliability</span></div>
-              <div class="focus-item"><strong>Embedded systems</strong><span>Arduino, sensors, device logic, hardware-software integration</span></div>
-              <div class="focus-item"><strong>Human factors</strong><span>User research, ergonomics, measurable prototype testing</span></div>
-              <div class="focus-item"><strong>AI evaluation</strong><span>Failure modes, uncertainty, prompts, trust, explainability</span></div>
+              <div class="focus-item"><strong>Software</strong><span>Apps, coding, and making things easier to use</span></div>
+              <div class="focus-item"><strong>Hardware</strong><span>Arduino, electronics, CAD, and 3D printing</span></div>
+              <div class="focus-item"><strong>AI research</strong><span>Testing where AI gets things wrong</span></div>
+              <div class="focus-item"><strong>Design</strong><span>Listening to users and improving prototypes</span></div>
             </div>
           </article>
-
-          <article class="panel reveal">
-            <h3>Portfolio philosophy</h3>
-            <p>Every project is labeled by its real stage. Shipped work stays separate from active experiments, research stays separate from product claims, and planned projects are clearly marked as planned.</p>
+          <article class="panel">
+            <h3>How I work</h3>
+            <p>I start small and try to get something working before making it bigger. I also like showing the process, including problems I ran into along the way.</p>
             <div class="focus-list">
-              <div class="focus-item"><strong>Show proof</strong><span>Repos, demos, photos, test data, research memos</span></div>
-              <div class="focus-item"><strong>Show process</strong><span>Problem → build → test → iterate</span></div>
-              <div class="focus-item"><strong>Show depth</strong><span>Explain technical decisions, not only tools</span></div>
-              <div class="focus-item"><strong>Keep it current</strong><span>Next milestones make progress visible</span></div>
+              <div class="focus-item"><strong>Build</strong><span>Turn an idea into something I can test</span></div>
+              <div class="focus-item"><strong>Check</strong><span>Find out what works and what doesn't</span></div>
+              <div class="focus-item"><strong>Improve</strong><span>Make changes based on what I learn</span></div>
+              <div class="focus-item"><strong>Share</strong><span>Keep notes, photos, code, and research</span></div>
             </div>
           </article>
         </div>
@@ -472,82 +206,52 @@
 
     <section id="work">
       <div class="container">
-        <div class="section-head reveal">
-          <div><div class="eyebrow">Selected work</div><h2>What exists, what’s active, and what’s next.</h2></div>
-          <p>Filter projects by stage and type. Each project includes the current stage, next milestone, technical stack, evidence, and working roadmap.</p>
+        <div class="section-head">
+          <div><div class="eyebrow">Projects</div><h2>Things I've made and worked on</h2></div>
+          <p>Some are finished, some are still being built, and a few are ideas I'm planning to try.</p>
         </div>
-        <div class="filters reveal" id="filters"></div>
+        <div class="filters" id="filters"></div>
         <div class="project-grid" id="projectGrid"></div>
       </div>
     </section>
 
-    <section id="roadmap">
-      <div class="container roadmap-shell">
-        <div class="roadmap-intro reveal">
-          <div class="eyebrow">2025 → 2027</div>
-          <h3>Build trajectory</h3>
-          <p>The goal is to move from shipped mobile products into deeper ECE work: embedded systems, sensing, computer vision, and measurable hardware-software prototypes.</p>
-          <p class="mono" style="margin-top:18px;color:var(--muted)">Targets can move as testing changes the plan.</p>
+    <section id="plan">
+      <div class="container">
+        <div class="section-head">
+          <div><div class="eyebrow">Plan</div><h2>What I'm working toward</h2></div>
+          <p>I want to keep getting better at both software and hardware, while putting more of my work out for people to use.</p>
         </div>
-
-        <div class="timeline reveal">
-          <div class="timeline-item">
-            <span class="timeline-dot"></span><div class="timeline-date">NOV 2025</div>
-            <h4>Chef’s Ledger shipped</h4><p>Released an inventory and expense workflow app and validated practical cost-saving value.</p>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-dot"></span><div class="timeline-date">APR 2026</div>
-            <h4>Odontiv shipped</h4><p>Released an iPadOS product for dental inventory, pricing, expiration alerts, receipts, and PDF workflows.</p>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-dot"></span><div class="timeline-date">JUN 2026</div>
-            <h4>NeoPixel electronics build completed</h4><p>Combined FreeCAD, 3D printing, Arduino control, soldering, LEDs, buttons, and fit-tolerance iteration.</p>
-          </div>
-          <div class="timeline-item">
-            <span class="timeline-dot"></span><div class="timeline-date">JUL–OCT 2026</div>
-            <h4>ClearPolicy AI research internship completed</h4><p>Audited California election records, designed 12 policy-AI test cases, and completed a technical research report with reliability recommendations.</p>
-          </div>
-          <div class="timeline-item current">
-            <span class="timeline-dot"></span><div class="timeline-date">AUG 2026</div>
-            <h4>TAPELLE validation + KairoAI development</h4><p>TAPELLE is in user research and validation. KairoAI is in architecture and early MVP development.</p>
-          </div>
-          <div class="timeline-item target">
-            <span class="timeline-dot"></span><div class="timeline-date">FALL 2026 TARGET</div>
-            <h4>Prototype and MVP milestones</h4><p>Turn TAPELLE research into CAD prototypes and push KairoAI toward a narrow, testable coaching loop.</p>
-          </div>
-          <div class="timeline-item target">
-            <span class="timeline-dot"></span><div class="timeline-date">SPRING 2027 TARGET</div>
-            <h4>Deeper embedded + vision work</h4><p>Expand into ESP32 or Raspberry Pi, camera or sensor acquisition, OpenCV, and quantitative testing.</p>
-          </div>
-          <div class="timeline-item target">
-            <span class="timeline-dot"></span><div class="timeline-date">FALL 2027 TARGET</div>
-            <h4>Transfer with a documented engineering body of work</h4><p>Enter a four-year ECE program with shipped software, research experience, hardware prototypes, and detailed build documentation.</p>
-          </div>
+        <div class="plan-grid">
+          <div class="plan-card"><span>2025 to 2026</span><h3>Publish my first apps</h3><p>Released Chef's Ledger and Odontiv on the App Store.</p></div>
+          <div class="plan-card"><span>2026</span><h3>Learn through research</h3><p>Completed my ClearPolicy AI research internship and wrote a report on policy AI reliability.</p></div>
+          <div class="plan-card"><span>Fall 2026</span><h3>Keep building</h3><p>Work on TAPELLE prototypes and a small first version of KairoAI.</p></div>
+          <div class="plan-card"><span>Spring 2027</span><h3>More embedded projects</h3><p>Build more with sensors, microcontrollers, and cameras.</p></div>
+          <div class="plan-card"><span>Fall 2027 goal</span><h3>Transfer for ECE</h3><p>Continue studying engineering at a four-year university and keep building on what I've learned.</p></div>
         </div>
       </div>
     </section>
 
     <section id="education">
       <div class="container">
-        <div class="section-head reveal">
-          <div><div class="eyebrow">Education + credentials</div><h2>Building the theory behind the systems.</h2></div>
-          <p>Coursework and credentials support the same direction as my projects: electrical and computer engineering, software systems, AI, and hands-on prototyping.</p>
+        <div class="section-head">
+          <div><div class="eyebrow">Education</div><h2>School and learning</h2></div>
+          <p>I'm working on my engineering foundation through classes, personal projects, and research.</p>
         </div>
         <div class="experience-grid">
-          <article class="experience-card reveal">
-            <div class="date">Jun 2026–Present</div>
-            <h3>De Anza College + Ohlone College</h3>
-            <p>Electrical &amp; Computer Engineering. Current résumé lists a 4.000 GPA at both colleges and Dean’s List recognition.</p>
+          <article class="experience-card">
+            <div class="date">2026 to present</div>
+            <h3>De Anza College and Ohlone College</h3>
+            <p>Electrical and Computer Engineering. College GPA: 3.92. Current classes include data structures, linear algebra, and electricity and magnetism.</p>
           </article>
-          <article class="experience-card reveal">
-            <div class="date">Graduated May 2026</div>
+          <article class="experience-card">
+            <div class="date">Graduated 2026</div>
             <h3>Newark Memorial High School</h3>
-            <p>High School Diploma. Graduated as an honors student with a 4.400 GPA.</p>
+            <p>Graduated with honors before continuing on to community college for engineering.</p>
           </article>
-          <article class="experience-card reveal">
-            <div class="date">Certifications</div>
-            <h3>AI + Technology Foundations</h3>
-            <p>IBM SkillsBuild foundations in Data, IT, Cybersecurity, and AI, plus Claude AI Fluency.</p>
+          <article class="experience-card">
+            <div class="date">Extra learning</div>
+            <h3>Online courses and certificates</h3>
+            <p>Completed courses through IBM SkillsBuild in AI, data, IT, and cybersecurity, along with additional AI learning.</p>
           </article>
         </div>
       </div>
@@ -555,34 +259,26 @@
 
     <section id="experience">
       <div class="container">
-        <div class="section-head reveal">
-          <div><div class="eyebrow">Experience</div><h2>Research, engineering, and responsibility.</h2></div>
-          <p>I’m building technical depth while also developing communication, reliability, and decision-making through work that has real users and real consequences.</p>
+        <div class="section-head">
+          <div><div class="eyebrow">Experience</div><h2>Work I've done</h2></div>
+          <p>I've learned a lot from research, working with people, and building my own projects.</p>
         </div>
         <div class="experience-grid">
-          <article class="experience-card reveal">
-            <div class="date">Jul 2026–Oct 2026 · Completed</div>
-            <h3>ClearPolicy · AI Research Intern</h3>
-            <p>Researched reliability in AI policy tools. Audited ten California ballot measures against official results, identified three status mismatches, and designed twelve evaluation prompts. Presented the findings and recommendations in a final research report.</p>
-            <div class="experience-report-action">
-              <a class="button small ghost"
-                 href="https://docs.google.com/document/d/18umTlEGEg6DXdEpuKFZj4H7H9dqQoBe8/edit?usp=drivesdk&amp;ouid=110374823140554729633&amp;rtpof=true&amp;sd=true"
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 aria-label="Read ClearPolicy LLM reliability research report in Google Docs">
-                 Read Research Paper ↗
-              </a>
-            </div>
+          <article class="experience-card">
+            <div class="date">Jul 2026 to Oct 2026</div>
+            <h3>ClearPolicy | AI Research Intern</h3>
+            <p>Researched where AI tools can get policy information wrong. I compared 10 California ballot measures with official results, found 3 labels that didn't match, designed 12 test questions, and wrote a research paper with suggestions for improving accuracy.</p>
+            <div class="actions"><a class="button small" href="https://docs.google.com/document/d/18umTlEGEg6DXdEpuKFZj4H7H9dqQoBe8/edit?usp=drivesdk&amp;ouid=110374823140554729633&amp;rtpof=true&amp;sd=true" target="_blank" rel="noopener noreferrer">Read research paper</a></div>
           </article>
-          <article class="experience-card reveal">
-            <div class="date">May 2023–Present</div>
-            <h3>Silliman Family &amp; Aquatic Center</h3>
-            <p>Lifeguard and Water Safety Instructor. Protect 100+ patrons per shift and teach swim students ages 3+ while adapting instruction to safety needs and skill level.</p>
+          <article class="experience-card">
+            <div class="date">May 2023 to present</div>
+            <h3>Silliman Family and Aquatic Center</h3>
+            <p>I work as a lifeguard and water safety instructor. I watch over swimmers, teach lessons, and adapt how I teach to help students learn safely.</p>
           </article>
-          <article class="experience-card reveal">
-            <div class="date">Independent Product Work</div>
-            <h3>Software + Hardware Builder</h3>
-            <p>Independently shipped iPadOS applications and built physical electronics prototypes using CAD, 3D printing, Arduino, soldering, testing, and iterative debugging.</p>
+          <article class="experience-card">
+            <div class="date">Personal projects</div>
+            <h3>Software and hardware</h3>
+            <p>I've published two iPad apps and worked on electronics projects using Arduino, CAD, 3D printing, and soldering.</p>
           </article>
         </div>
       </div>
@@ -590,384 +286,181 @@
 
     <section id="skills">
       <div class="container">
-        <div class="section-head reveal">
-          <div><div class="eyebrow">Technical toolkit</div><h2>Tools I use now, and the next layer I’m building.</h2></div>
-          <p>I separate demonstrated tools from technologies I’m actively learning so the portfolio stays accurate.</p>
+        <div class="section-head">
+          <div><div class="eyebrow">Skills</div><h2>Tools I use and things I'm learning</h2></div>
+          <p>These are tools I've used in my work. I'm still learning and improving, especially on the engineering side.</p>
         </div>
         <div class="skills-grid">
-          <article class="skill-card reveal">
-            <h3>Software</h3>
-            <p>Languages, frameworks, and development tools used in shipped or active work.</p>
-            <div class="skill-list">
-              <span class="tag">Swift</span><span class="tag">SwiftUI</span><span class="tag">C++</span><span class="tag">Java</span><span class="tag">Python</span><span class="tag">iPadOS</span><span class="tag">CloudKit</span><span class="tag">PDFKit</span><span class="tag">iCloud</span><span class="tag">Xcode</span><span class="tag">GitHub</span>
-            </div>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Hardware + Prototyping</h3>
-            <p>Physical design and integration tools used in completed builds.</p>
-            <div class="skill-list">
-              <span class="tag">Arduino Nano</span><span class="tag">FreeCAD</span><span class="tag">3D Printing</span><span class="tag">Creality K2</span><span class="tag">Soldering</span><span class="tag">NeoPixel LEDs</span><span class="tag">UI/UX Design</span>
-            </div>
-          </article>
-          <article class="skill-card reveal">
-            <h3>Next Technical Layer</h3>
-            <p>Technologies planned for deeper embedded and computer-vision work.</p>
-            <div class="skill-list">
-              <span class="tag">ESP32</span><span class="tag">Raspberry Pi</span><span class="tag">OpenCV</span><span class="tag">Sensors</span><span class="tag">Camera Acquisition</span><span class="tag">Networking</span>
-            </div>
-          </article>
+          <article class="skill-card"><h3>Software</h3><p>Apps, websites, and development tools.</p><div class="tags"><span class="tag">Swift</span><span class="tag">SwiftUI</span><span class="tag">C++</span><span class="tag">React</span><span class="tag">Node.js</span><span class="tag">Xcode</span><span class="tag">CloudKit</span><span class="tag">PDFKit</span><span class="tag">GitHub</span></div></article>
+          <article class="skill-card"><h3>Hardware</h3><p>Building and testing physical projects.</p><div class="tags"><span class="tag">Arduino</span><span class="tag">Raspberry Pi</span><span class="tag">FreeCAD</span><span class="tag">3D printing</span><span class="tag">Soldering</span><span class="tag">LEDs</span></div></article>
+          <article class="skill-card"><h3>Research and design</h3><p>Understanding problems and checking results.</p><div class="tags"><span class="tag">AI evaluation</span><span class="tag">Research writing</span><span class="tag">Data checking</span><span class="tag">User research</span><span class="tag">UI/UX</span></div></article>
         </div>
       </div>
     </section>
 
     <section id="contact">
-      <div class="container">
-        <div class="contact-card reveal">
-          <div>
-            <div class="eyebrow">Contact</div>
-            <h2>Let’s build something useful.</h2>
-            <p>I’m interested in engineering internships, research opportunities, technical collaborations, and projects involving software, embedded systems, AI, or product development.</p>
-          </div>
-          <div class="contact-actions">
-            <a class="button primary" href="mailto:realmwonders36@gmail.com">Email me</a>
-            <a class="button ghost" href="https://www.linkedin.com/in/aditya-dave-2b23a8270/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-            <a class="button ghost" href="https://github.com/AdityaDave2008" target="_blank" rel="noopener noreferrer">GitHub</a>
-          </div>
+      <div class="container contact-card">
+        <div class="eyebrow">Contact</div>
+        <h2>Get in touch</h2>
+        <p class="muted">I'm interested in internships, research, and projects involving software, AI, or electronics.</p>
+        <div class="actions">
+          <a class="button primary" href="mailto:realmwonders36@gmail.com">Email me</a>
+          <a class="button" href="https://www.linkedin.com/in/aditya-dave-2b23a8270/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="button" href="https://github.com/AdityaDave2008" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>
     </section>
   </main>
-
-  <footer>
-    <div class="container footer-row">
-      <span>© <span id="year"></span> Aditya Dave</span>
-      <span>Built as a living engineering portfolio.</span>
-    </div>
-  </footer>
+  <footer><div class="container footer-row"><span>© <span id="year"></span> Aditya Dave</span><span>My portfolio</span></div></footer>
 
   <dialog id="projectDialog">
-    <div class="dialog-inner">
-      <div class="dialog-head">
-        <div>
-          <div class="eyebrow" id="dialogKicker"></div>
-          <h3 id="dialogTitle"></h3>
-        </div>
-        <button class="close-button" id="dialogClose" type="button" aria-label="Close">×</button>
-      </div>
-      <p class="dialog-summary" id="dialogSummary"></p>
-      <div id="dialogContent"></div>
-    </div>
+    <div class="dialog-head"><div><div class="eyebrow" id="dialogKicker"></div><h2 id="dialogTitle"></h2></div><button type="button" class="close-button" id="dialogClose" aria-label="Close details">×</button></div>
+    <p id="dialogSummary" class="muted"></p>
+    <div id="dialogContent"></div>
   </dialog>
 
   <script>
+    const paperUrl = "https://docs.google.com/document/d/18umTlEGEg6DXdEpuKFZj4H7H9dqQoBe8/edit?usp=drivesdk&ouid=110374823140554729633&rtpof=true&sd=true";
+
     const projects = [
       {
-        title: "TAPELLE",
-        kicker: "Beauty-tech · HCI · Hardware",
-        filters: ["Active", "Hardware"],
-        status: "Active",
-        accent: "#6ee7f9",
-        summary: "A long-nail-friendly keyboard and keycap system designed around real typing constraints instead of asking users to adapt their nails to a standard keyboard.",
-        stage: "Problem validation + user research",
-        next: "Convert survey and outreach findings into V1 design requirements and prototype geometry.",
-        stack: ["User Research", "Human Factors", "FreeCAD", "3D Printing", "Creality K2", "Prototype Testing"],
-        proof: [
-          "Research survey and outreach are active.",
-          "Nail extension and shape are being recorded separately.",
-          "Prototype testing is planned around typing speed, errors, comfort, and fit."
-        ],
-        roadmap: [
-          ["Aug 2026", "Problem validation, survey distribution, respondent outreach", "now"],
-          ["Sep 2026", "Synthesize findings and freeze V1 requirements", "next"],
-          ["Oct 2026", "CAD and 3D-print first prototype set", "next"],
-          ["Nov-Dec 2026", "Run structured typing tests and iterate geometry", "later"],
-          ["Early 2027", "Pilot refined design with a broader tester group", "later"]
-        ],
-        repo: "",
-        live: ""
+        title: "TAPELLE", category: "Hardware", status: "In progress", color: "#6ee7f9",
+        subtitle: "Keyboard design and user research",
+        summary: "I'm working on a keyboard design that is easier to use with long nails. The idea came from a typing problem I wanted to understand better.",
+        stage: "Talking with potential users and working toward an early prototype.",
+        tags: ["User research", "FreeCAD", "3D printing", "Design"],
+        details: ["Gathered feedback about how nail length and shape affect typing.", "Working toward a first design that can be tested for comfort and typing mistakes."],
+        plan: ["Collect feedback and choose a first design", "Make and test a prototype", "Adjust the parts based on results"]
       },
       {
-        title: "KairoAI",
-        kicker: "AI · Sports · Product",
-        filters: ["Active"],
-        status: "Active",
-        accent: "#7c9cff",
-        summary: "An AI-assisted sports coaching product aimed at turning practice or performance inputs into specific feedback that helps athletes understand what to improve next.",
-        stage: "Architecture research + early MVP development",
-        next: "Narrow the first coaching loop so one input can reliably produce one useful, testable feedback experience.",
-        stack: ["AI Product Design", "Python", "Evaluation", "Feedback Systems", "UX", "Architecture Research"],
-        proof: [
-          "Core product direction is defined around personalized coaching feedback.",
-          "Architecture and feature behavior are being researched and tested.",
-          "The immediate goal is a narrow MVP before expanding across sports."
-        ],
-        roadmap: [
-          ["Aug 2026", "Define first-sport scope, feedback rubric, and MVP architecture", "now"],
-          ["Sep-Oct 2026", "Build the first end-to-end analysis and feedback loop", "next"],
-          ["Nov 2026", "Private alpha testing and error analysis", "next"],
-          ["Dec 2026-Jan 2027", "Improve feedback quality, UI, and repeatability", "later"],
-          ["Spring 2027", "Broaden testing only after the first loop is reliable", "later"]
-        ],
-        repo: "",
-        live: ""
+        title: "KairoAI", category: "Software", status: "In progress", color: "#7c9cff",
+        subtitle: "AI sports coaching idea",
+        summary: "KairoAI is a sports coaching app idea I'm developing. I want it to give players feedback they can use when they practice.",
+        stage: "Planning the first version and deciding what it should do well.",
+        tags: ["AI", "App design", "Sports", "UX"],
+        details: ["Working on a smaller first version before adding more features.", "Thinking through what useful and reliable coaching feedback should look like."],
+        plan: ["Build one working feedback feature", "Let a small group try it", "Improve it from their feedback"]
       },
       {
-        title: "Odontiv",
-        kicker: "iPadOS · Inventory · Productivity",
-        filters: ["Shipped"],
-        status: "Shipped",
-        accent: "#67e8a5",
-        summary: "A published iPadOS dental inventory workflow that links procedure records to material usage, stock updates, pricing, expiration alerts, receipt capture, and PDF exports.",
-        stage: "App Store release → post-launch iteration",
-        next: "Improve onboarding, collect user feedback, and test a repeatable acquisition loop.",
-        stack: ["Swift", "SwiftUI", "CloudKit", "PDFKit", "iCloud", "Xcode", "Product Design"],
-        proof: [
-          "Published to the App Store in April 2026.",
-          "Links procedure records to material usage, stock updates, pricing, expiration alerts, receipt capture, and PDF exports.",
-          "Current focus is product iteration and user growth."
-        ],
-        roadmap: [
-          ["Apr 2026", "App Store release", "done"],
-          ["Aug-Sep 2026", "Audit onboarding, feedback collection, and analytics", "now"],
-          ["Fall 2026", "Run small user-acquisition and retention experiments", "next"],
-          ["2027", "Prioritize updates from observed user behavior", "later"]
-        ],
-        repo: "",
-        live: "https://apps.apple.com/us/app/odontiv/id6761696456"
+        title: "Odontiv", category: "Apps", status: "Published", color: "#67e8a5",
+        subtitle: "iPad app for dental offices",
+        summary: "An iPad app I made to help dental offices keep track of supplies, costs, expiration dates, and receipts.",
+        stage: "Available on the App Store.",
+        tags: ["Swift", "SwiftUI", "CloudKit", "PDFKit"],
+        details: ["Published in April 2026.", "Includes inventory tracking, alerts, receipt tools, and PDF exports."],
+        plan: ["Get feedback from users", "Improve the app where people need it most"],
+        link: "https://apps.apple.com/us/app/odontiv/id6761696456", linkText: "View app"
       },
       {
-        title: "Chef’s Ledger",
-        kicker: "iPadOS · Inventory · Cost Tracking",
-        filters: ["Shipped"],
-        status: "Shipped",
-        accent: "#f8cf75",
-        summary: "A published iPadOS culinary inventory workflow for grocery planning, inventory tracking, low-stock alerts, expense tracking, receipt capture, cloud backup, and reporting.",
-        stage: "Shipped product → validation + growth",
-        next: "Document the strongest real-world workflow, tighten the product story, and test whether that value can generalize to more users.",
-        stack: ["Swift", "SwiftUI", "CloudKit", "PDFKit", "Inventory Systems", "Expense Tracking", "UX"],
-        proof: [
-          "Published to the App Store in November 2025.",
-          "Automates grocery planning, inventory tracking, low-stock alerts, expense tracking, receipt capture, cloud backup, and reporting.",
-          "Early real-world use produced about $400 in supply-cost savings."
-        ],
-        roadmap: [
-          ["Nov 2025", "App Store release", "done"],
-          ["2026", "Validate real-world cost-control workflows", "now"],
-          ["Fall 2026", "Improve positioning, onboarding, and user acquisition", "next"],
-          ["2027", "Expand around features users repeatedly value", "later"]
-        ],
-        repo: "",
-        live: "https://apps.apple.com/us/app/chefs-ledger/id675395668"
+        title: "Chef's Ledger", category: "Apps", status: "Published", color: "#f8cf75",
+        subtitle: "iPad app for kitchen inventory",
+        summary: "An app I built for tracking food supplies, shopping, and expenses in a kitchen.",
+        stage: "Available on the App Store.",
+        tags: ["Swift", "SwiftUI", "Inventory", "PDFKit"],
+        details: ["Published in November 2025.", "Includes shopping lists, low-stock alerts, expense tracking, and receipts."],
+        plan: ["Keep improving how easy it is to use", "Reach more people who could benefit from it"],
+        link: "https://apps.apple.com/us/app/chefs-ledger/id675395668", linkText: "View app"
       },
       {
-        title: "ClearPolicy LLM Reliability Research",
-        kicker: "AI Research · Policy · Evaluation",
-        filters: ["Research"],
-        status: "Completed",
-        accent: "#ff8aa1",
-        summary: "Research on why AI-generated policy explanations can be unreliable, supported by a ten-measure election-data audit and a final technical paper.",
-        stage: "Research completed · final report published",
-        next: "Read the report for the audit findings, proposed tests, and recommendations for more reliable policy AI.",
-        stack: ["LLM Evaluation", "Data Validation", "Failure Analysis", "Policy Reasoning", "Technical Writing", "Uncertainty Handling"],
-        proof: [
-          "Completed AI & Policy Integration internship at ClearPolicy, July to October 2026.",
-          "Compared ten California ballot-measure labels with certified results and found three mismatches in the sample.",
-          "Designed twelve policy-AI evaluation prompts and authored a final research report with recommendations; the prompts were not represented as completed model tests."
-        ],
-        roadmap: [
-          ["Jul 2026", "Define research scope and failure-mode categories", "done"],
-          ["Aug–Sep 2026", "Audit public policy status records and investigate legislative edge cases", "done"],
-          ["Oct 2026", "Complete twelve-prompt test design and final research report", "done"]
-        ],
-        repo: "",
-        live: "",
-        paper: "https://docs.google.com/document/d/18umTlEGEg6DXdEpuKFZj4H7H9dqQoBe8/edit?usp=drivesdk&ouid=110374823140554729633&rtpof=true&sd=true"
+        title: "ClearPolicy AI Research", category: "Research", status: "Completed", color: "#ff8aa1",
+        subtitle: "LLM reliability and policy research",
+        summary: "During my ClearPolicy internship, I studied how AI can give wrong or misleading answers about laws and policies.",
+        stage: "Internship and research report completed in October 2026.",
+        tags: ["LLM evaluation", "Policy research", "Data checking", "Technical writing"],
+        details: ["Compared 10 California ballot measures with official election results and found 3 mismatched labels.", "Designed 12 test questions about legal status, citations, and uncertainty. These were proposed tests, not completed model experiments.", "Wrote a research paper with findings and ideas for improving AI reliability."],
+        plan: ["Research and paper finished", "The 12 questions could be used for future testing"],
+        link: paperUrl, linkText: "Read research paper"
       },
       {
-        title: "NeoPixel Electronics Build",
-        kicker: "Arduino · CAD · Fabrication",
-        filters: ["Hardware"],
-        status: "Completed",
-        accent: "#b59cff",
-        summary: "A completed electronics and fabrication project that combined a custom 3D-printed enclosure, Arduino Nano control, addressable LEDs, physical inputs, soldering, and fit-tolerance iteration.",
-        stage: "Built + tested → documentation polish",
-        next: "Turn the build into a concise engineering case study with photos, a system diagram, tolerance lessons, and debugging notes.",
-        stack: ["Arduino Nano", "FreeCAD", "3D Printing", "Soldering", "NeoPixel LEDs", "Hardware Debugging"],
-        proof: [
-          "Completed in June 2026.",
-          "Integrated electronics, physical controls, printed parts, and software behavior.",
-          "Required repeated fit and tolerance adjustments on the Creality K2."
-        ],
-        roadmap: [
-          ["Jun 2026", "Complete physical build and electronics integration", "done"],
-          ["Fall 2026", "Add portfolio photos and system diagram", "next"],
-          ["Later", "Use lessons learned in more complex embedded builds", "later"]
-        ],
-        repo: "",
-        live: ""
+        title: "NeoPixel Electronics Build", category: "Hardware", status: "Completed", color: "#b59cff",
+        subtitle: "Arduino, LEDs, and 3D printing",
+        summary: "I built an electronics project with a custom printed body, an Arduino Nano, and programmable LEDs.",
+        stage: "Built and tested.",
+        tags: ["Arduino", "FreeCAD", "3D printing", "Soldering"],
+        details: ["Worked on wiring, controls, the enclosure, and the LED behavior.", "Had to fix power and fit issues while testing."],
+        plan: ["Add more photos and a clear build explanation"]
       },
       {
-        title: "Embedded Vision + Sensing System",
-        kicker: "Planned · ECE · Computer Vision",
-        filters: ["Planned", "Hardware"],
-        status: "Planned",
-        accent: "#82d4ff",
-        summary: "A planned portable project for combining sensing, camera acquisition, computation, and quantitative analysis into one documented hardware-software system.",
-        stage: "Skill acquisition + project scoping",
-        next: "Choose one narrow measurable problem, define sensors and success metrics, then prototype the smallest complete system.",
-        stack: ["ESP32", "Raspberry Pi", "OpenCV", "Sensors", "Camera Acquisition", "Networking", "Python"],
-        proof: [
-          "This is intentionally marked as planned, not completed work.",
-          "It aligns with the next ECE skill layer: sensing, networking, vision, and quantitative testing.",
-          "The final topic will be selected after the measurement goal is clear."
-        ],
-        roadmap: [
-          ["Fall 2026", "Learn ESP32 or Raspberry Pi acquisition workflows", "next"],
-          ["Winter 2026-27", "Select problem, sensors, camera, and evaluation metric", "later"],
-          ["Spring 2027", "Build first portable prototype", "later"],
-          ["Spring-Summer 2027", "Collect data, iterate, and publish case study", "later"]
-        ],
-        repo: "",
-        live: ""
+        title: "Embedded Camera and Sensor Project", category: "Hardware", status: "Planned", color: "#82d4ff",
+        subtitle: "A future engineering build",
+        summary: "I want to build a small system that uses sensors or a camera to collect and work with real-world data.",
+        stage: "Still planning. This is not a completed project.",
+        tags: ["ESP32", "Raspberry Pi", "Sensors", "OpenCV"],
+        details: ["Interested in connecting hardware with software and testing the results."],
+        plan: ["Choose one problem to solve", "Pick the hardware", "Build a small prototype and test it"]
       }
     ];
 
-    const filterNames = ["All", "Active", "Shipped", "Research", "Hardware", "Planned"];
-    const grid = document.getElementById("projectGrid");
     const filters = document.getElementById("filters");
+    const grid = document.getElementById("projectGrid");
     const dialog = document.getElementById("projectDialog");
+    const categories = ["All", "Apps", "Software", "Hardware", "Research"];
 
-    function escapeHTML(value = "") {
-      return value.replace(/[&<>'"]/g, char => ({
-        "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;"
+    function escapeHTML(value) {
+      return String(value).replace(/[&<>"']/g, char => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
       }[char]));
     }
 
-    function renderFilters() {
-      filters.innerHTML = filterNames.map((name, i) =>
-        `<button class="filter ${i === 0 ? "active" : ""}" type="button" data-filter="${name}">${name}</button>`
-      ).join("");
-    }
-
-    function renderProjects(filter = "All") {
-      const visible = filter === "All" ? projects : projects.filter(project => project.filters.includes(filter));
-
-      grid.innerHTML = visible.map(project => {
-        const index = projects.indexOf(project);
-        return `
-          <article class="project-card reveal visible" style="--card-accent:${project.accent}">
-            <div class="project-top">
-              <div>
-                <div class="project-kicker">${escapeHTML(project.kicker)}</div>
-                <h3>${escapeHTML(project.title)}</h3>
-              </div>
-              <span class="status">${escapeHTML(project.status)}</span>
-            </div>
-            <p class="project-summary">${escapeHTML(project.summary)}</p>
-            <div class="stage-box">
-              <div class="stage-label">Current stage</div>
-              <div class="stage-value">${escapeHTML(project.stage)}</div>
-            </div>
-            <div class="tags">${project.stack.slice(0, 5).map(tag => `<span class="tag">${escapeHTML(tag)}</span>`).join("")}</div>
-            ${project.paper ? `<div class="project-report-action"><a class="button small primary" href="${escapeHTML(project.paper)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHTML(project.title)} research paper in Google Docs">Read Research Paper ↗</a></div>` : ""}
-            <div class="project-bottom">
-              <div class="next-step"><strong style="color:var(--text)">Next:</strong> ${escapeHTML(project.next)}</div>
-              <button class="details-button" type="button" data-project-index="${index}">Details ↗</button>
-            </div>
-          </article>
-        `;
+    function renderProjects(category = "All") {
+      const visible = category === "All" ? projects : projects.filter(p => p.category === category);
+      grid.innerHTML = visible.map(p => {
+        const index = projects.indexOf(p);
+        return `<article class="project-card" style="--project-color:${p.color}">
+          <div class="project-top"><div><div class="project-kicker">${escapeHTML(p.subtitle)}</div><h3>${escapeHTML(p.title)}</h3></div><span class="status">${escapeHTML(p.status)}</span></div>
+          <p class="project-summary">${escapeHTML(p.summary)}</p>
+          <p class="stage">${escapeHTML(p.stage)}</p>
+          <div class="tags">${p.tags.map(t => `<span class="tag">${escapeHTML(t)}</span>`).join("")}</div>
+          ${p.link && p.category === "Research" ? `<div><a class="button small primary" href="${escapeHTML(p.link)}" target="_blank" rel="noopener noreferrer">Read research paper</a></div>` : ""}
+          <div class="project-bottom"><span class="muted">${escapeHTML(p.status)}</span><button type="button" class="details-button" data-index="${index}">View details</button></div>
+        </article>`;
       }).join("");
     }
 
+    function renderFilters() {
+      filters.innerHTML = categories.map((c, i) => `<button type="button" class="filter ${i === 0 ? "active" : ""}" data-category="${c}">${c}</button>`).join("");
+    }
+
     function openProject(index) {
-      const project = projects[index];
-      if (!project) return;
-
-      document.getElementById("dialogKicker").textContent = project.kicker;
-      document.getElementById("dialogTitle").textContent = project.title;
-      document.getElementById("dialogSummary").textContent = project.summary;
-
-      const roadmapHTML = project.roadmap.map(([date, item, state]) => `
-        <div class="roadmap-row">
-          <time>${escapeHTML(date)}</time>
-          <div>${escapeHTML(item)}</div>
-          <span class="roadmap-state ${escapeHTML(state)}">${escapeHTML(state)}</span>
-        </div>
-      `).join("");
-
-      const links = [
-        project.repo ? `<a class="button small ghost" href="${project.repo}" target="_blank" rel="noopener noreferrer">Repository</a>` : "",
-        project.live ? `<a class="button small primary" href="${escapeHTML(project.live)}" target="_blank" rel="noopener noreferrer">Live / Demo</a>` : "",
-        project.paper ? `<a class="button small primary" href="${escapeHTML(project.paper)}" target="_blank" rel="noopener noreferrer">Read Research Paper ↗</a>` : ""
-      ].join("");
-
+      const p = projects[index];
+      if (!p) return;
+      document.getElementById("dialogKicker").textContent = p.subtitle;
+      document.getElementById("dialogTitle").textContent = p.title;
+      document.getElementById("dialogSummary").textContent = p.summary;
       document.getElementById("dialogContent").innerHTML = `
-        <div class="dialog-section">
-          <h4>Current stage</h4>
-          <div class="stage-value">${escapeHTML(project.stage)}</div>
-        </div>
-        <div class="dialog-section">
-          <h4>Proof / evidence</h4>
-          ${project.proof.map(item => `<p style="margin:7px 0;color:var(--muted)">• ${escapeHTML(item)}</p>`).join("")}
-        </div>
-        <div class="dialog-section">
-          <h4>Technical stack</h4>
-          <div class="tags">${project.stack.map(tag => `<span class="tag">${escapeHTML(tag)}</span>`).join("")}</div>
-        </div>
-        <div class="dialog-section">
-          <h4>Working roadmap</h4>
-          ${roadmapHTML}
-        </div>
-        <div class="dialog-section">
-          <h4>${project.paper ? "Research deliverable" : "Next milestone"}</h4>
-          <p style="margin:0;color:var(--muted)">${escapeHTML(project.next)}</p>
-          ${links ? `<div class="dialog-actions">${links}</div>` : ""}
-        </div>
+        <div class="dialog-section"><h4>Where it stands</h4><p class="muted">${escapeHTML(p.stage)}</p></div>
+        <div class="dialog-section"><h4>What I've done</h4>${p.details.map(d => `<p class="muted">${escapeHTML(d)}</p>`).join("")}</div>
+        <div class="dialog-section"><h4>Plan</h4>${p.plan.map(s => `<div class="step muted">${escapeHTML(s)}</div>`).join("")}</div>
+        ${p.link ? `<div class="dialog-section"><a class="button primary" href="${escapeHTML(p.link)}" target="_blank" rel="noopener noreferrer">${escapeHTML(p.linkText)}</a></div>` : ""}
       `;
-
       dialog.showModal();
     }
 
-    filters.addEventListener("click", event => {
-      const button = event.target.closest("button[data-filter]");
+    filters.addEventListener("click", e => {
+      const button = e.target.closest("button[data-category]");
       if (!button) return;
-      document.querySelectorAll(".filter").forEach(item => item.classList.remove("active"));
+      filters.querySelectorAll("button").forEach(b => b.classList.remove("active"));
       button.classList.add("active");
-      renderProjects(button.dataset.filter);
+      renderProjects(button.dataset.category);
     });
-
-    grid.addEventListener("click", event => {
-      const button = event.target.closest("button[data-project-index]");
-      if (!button) return;
-      openProject(Number(button.dataset.projectIndex));
+    grid.addEventListener("click", e => {
+      const button = e.target.closest("button[data-index]");
+      if (button) openProject(Number(button.dataset.index));
     });
-
     document.getElementById("dialogClose").addEventListener("click", () => dialog.close());
-    dialog.addEventListener("click", event => {
-      const rect = dialog.getBoundingClientRect();
-      const outside = event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom;
-      if (outside) dialog.close();
-    });
+    dialog.addEventListener("click", e => { if (e.target === dialog) dialog.close(); });
 
     document.getElementById("year").textContent = new Date().getFullYear();
-
     const themeToggle = document.getElementById("themeToggle");
-    const savedTheme = localStorage.getItem("portfolio-theme");
-    if (savedTheme === "light" || savedTheme === "dark") document.documentElement.dataset.theme = savedTheme;
-
+    try {
+      const savedTheme = localStorage.getItem("portfolio-theme");
+      if (["dark", "light"].includes(savedTheme)) document.documentElement.dataset.theme = savedTheme;
+    } catch (e) {}
     themeToggle.addEventListener("click", () => {
       const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
       document.documentElement.dataset.theme = next;
-      localStorage.setItem("portfolio-theme", next);
+      try { localStorage.setItem("portfolio-theme", next); } catch (e) {}
     });
-
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add("visible");
-      });
-    }, { threshold: 0.08 });
-
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
 
     renderFilters();
     renderProjects();
