@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
 <head>
@@ -110,7 +111,14 @@
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
 
-    .nav-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
     .nav-links a, .theme-button {
       padding: 9px 12px;
       border: 1px solid transparent;
@@ -119,11 +127,26 @@
       color: var(--muted);
       transition: 160ms ease;
     }
-    .nav-links a:hover, .theme-button:hover { color: var(--text); border-color: var(--line); background: var(--card); }
+
+    .nav-links a:hover, .theme-button:hover {
+      color: var(--text);
+      border-color: var(--line);
+      background: var(--card);
+    }
     .theme-button { cursor: pointer; }
 
-    .hero { min-height: 78vh; display: grid; align-items: center; padding: 92px 0 62px; }
-    .hero-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 64px; align-items: center; }
+    .hero {
+      min-height: 78vh;
+      display: grid;
+      align-items: center;
+      padding: 92px 0 62px;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.25fr 0.75fr;
+      gap: 64px;
+      align-items: center;
+    }
 
     .eyebrow, .mono {
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
@@ -247,6 +270,8 @@
     .tags { display: flex; gap: 7px; flex-wrap: wrap; }
     .tag { padding: 5px 8px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 0.76rem; }
     .project-bottom { margin-top: auto; padding-top: 20px; display: flex; justify-content: space-between; align-items: center; gap: 15px; }
+    .project-report-action { margin-top: 18px; }
+    .experience-report-action { margin-top: 16px; }
     .next-step { max-width: 72%; color: var(--muted); font-size: 0.87rem; }
     .details-button { border: 0; background: none; color: var(--accent); font-weight: 760; cursor: pointer; }
 
@@ -373,7 +398,6 @@
           <div class="hero-actions">
             <a class="button primary" href="#work">See what I’m building ↘</a>
 
-            <!-- FIXED RESUME LINK: absolute Google Docs URL -->
             <a
               class="button ghost"
               id="resumeLink"
@@ -397,7 +421,7 @@
           <ul class="signal-list">
             <li><span>TAPELLE</span><strong>User research → prototype</strong></li>
             <li><span>KairoAI</span><strong>Architecture → MVP</strong></li>
-            <li><span>ClearPolicy</span><strong>LLM reliability research</strong></li>
+            <li><span>ClearPolicy</span><strong>Research completed · report available</strong></li>
             <li><span>Fall focus</span><strong>DSA + Linear Algebra + E&amp;M</strong></li>
           </ul>
         </aside>
@@ -479,9 +503,9 @@
             <span class="timeline-dot"></span><div class="timeline-date">JUN 2026</div>
             <h4>NeoPixel electronics build completed</h4><p>Combined FreeCAD, 3D printing, Arduino control, soldering, LEDs, buttons, and fit-tolerance iteration.</p>
           </div>
-          <div class="timeline-item current">
-            <span class="timeline-dot"></span><div class="timeline-date">JUL–SEP 2026</div>
-            <h4>ClearPolicy AI research internship</h4><p>Evaluate LLM failure modes in legislative reasoning and develop recommendations for reliability and explainability.</p>
+          <div class="timeline-item">
+            <span class="timeline-dot"></span><div class="timeline-date">JUL–OCT 2026</div>
+            <h4>ClearPolicy AI research internship completed</h4><p>Audited California election records, designed 12 policy-AI test cases, and completed a technical research report with reliability recommendations.</p>
           </div>
           <div class="timeline-item current">
             <span class="timeline-dot"></span><div class="timeline-date">AUG 2026</div>
@@ -537,9 +561,18 @@
         </div>
         <div class="experience-grid">
           <article class="experience-card reveal">
-            <div class="date">Jul 2026–Sep 2026</div>
+            <div class="date">Jul 2026–Oct 2026 · Completed</div>
             <h3>ClearPolicy · AI Research Intern</h3>
-            <p>Build structured test cases for LLM legislative reasoning, identify hallucinations and ambiguity, and research prompt engineering and evaluation techniques to improve reliability and explainability.</p>
+            <p>Researched reliability in AI policy tools. Audited ten California ballot measures against official results, identified three status mismatches, and designed twelve evaluation prompts. Presented the findings and recommendations in a final research report.</p>
+            <div class="experience-report-action">
+              <a class="button small ghost"
+                 href="https://docs.google.com/document/d/18umTlEGEg6DXdEpuKFZj4H7H9dqQoBe8/edit?usp=drivesdk&amp;ouid=110374823140554729633&amp;rtpof=true&amp;sd=true"
+                 target="_blank"
+                 rel="noopener noreferrer"
+                 aria-label="Read ClearPolicy LLM reliability research report in Google Docs">
+                 Read Research Paper ↗
+              </a>
+            </div>
           </article>
           <article class="experience-card reveal">
             <div class="date">May 2023–Present</div>
@@ -729,26 +762,26 @@
       {
         title: "ClearPolicy LLM Reliability Research",
         kicker: "AI Research · Policy · Evaluation",
-        filters: ["Active", "Research"],
-        status: "Research",
+        filters: ["Research"],
+        status: "Completed",
         accent: "#ff8aa1",
-        summary: "Research on where language models fail when reasoning about legislation, including hallucination, ambiguity, conflicting bills, overrides, implementation delays, and unjustified certainty.",
-        stage: "Ongoing internship research + weekly deliverables",
-        next: "Turn observed failure modes into clear evaluation patterns and recommendations for traceable uncertainty and safer system behavior.",
-        stack: ["LLM Evaluation", "Prompt Engineering", "Failure Analysis", "Policy Reasoning", "Research Writing", "Explainability"],
+        summary: "Research on why AI-generated policy explanations can be unreliable, supported by a ten-measure election-data audit and a final technical paper.",
+        stage: "Research completed · final report published",
+        next: "Read the report for the audit findings, proposed tests, and recommendations for more reliable policy AI.",
+        stack: ["LLM Evaluation", "Data Validation", "Failure Analysis", "Policy Reasoning", "Technical Writing", "Uncertainty Handling"],
         proof: [
-          "AI Research Intern at ClearPolicy, July to September 2026.",
-          "Builds structured test cases for complex legislative reasoning and identifies hallucinations, ambiguity, and failure modes.",
-          "Researches prompt engineering and AI evaluation techniques and delivers technical recommendations for reliability and explainability."
+          "Completed AI & Policy Integration internship at ClearPolicy, July to October 2026.",
+          "Compared ten California ballot-measure labels with certified results and found three mismatches in the sample.",
+          "Designed twelve policy-AI evaluation prompts and authored a final research report with recommendations; the prompts were not represented as completed model tests."
         ],
         roadmap: [
-          ["Jul 2026", "Begin evaluation framework and failure-mode catalog", "done"],
-          ["Aug 2026", "Run edge cases and document repeatable failure patterns", "now"],
-          ["By Sep 15, 2026", "Complete scheduled research deliverables", "next"],
-          ["After internship", "Publish a sanitized research summary if permitted", "later"]
+          ["Jul 2026", "Define research scope and failure-mode categories", "done"],
+          ["Aug–Sep 2026", "Audit public policy status records and investigate legislative edge cases", "done"],
+          ["Oct 2026", "Complete twelve-prompt test design and final research report", "done"]
         ],
         repo: "",
-        live: ""
+        live: "",
+        paper: "https://docs.google.com/document/d/18umTlEGEg6DXdEpuKFZj4H7H9dqQoBe8/edit?usp=drivesdk&ouid=110374823140554729633&rtpof=true&sd=true"
       },
       {
         title: "NeoPixel Electronics Build",
@@ -836,6 +869,7 @@
               <div class="stage-value">${escapeHTML(project.stage)}</div>
             </div>
             <div class="tags">${project.stack.slice(0, 5).map(tag => `<span class="tag">${escapeHTML(tag)}</span>`).join("")}</div>
+            ${project.paper ? `<div class="project-report-action"><a class="button small primary" href="${escapeHTML(project.paper)}" target="_blank" rel="noopener noreferrer" aria-label="Open ${escapeHTML(project.title)} research paper in Google Docs">Read Research Paper ↗</a></div>` : ""}
             <div class="project-bottom">
               <div class="next-step"><strong style="color:var(--text)">Next:</strong> ${escapeHTML(project.next)}</div>
               <button class="details-button" type="button" data-project-index="${index}">Details ↗</button>
@@ -863,7 +897,8 @@
 
       const links = [
         project.repo ? `<a class="button small ghost" href="${project.repo}" target="_blank" rel="noopener noreferrer">Repository</a>` : "",
-        project.live ? `<a class="button small primary" href="${project.live}" target="_blank" rel="noopener noreferrer">Live / Demo</a>` : ""
+        project.live ? `<a class="button small primary" href="${escapeHTML(project.live)}" target="_blank" rel="noopener noreferrer">Live / Demo</a>` : "",
+        project.paper ? `<a class="button small primary" href="${escapeHTML(project.paper)}" target="_blank" rel="noopener noreferrer">Read Research Paper ↗</a>` : ""
       ].join("");
 
       document.getElementById("dialogContent").innerHTML = `
@@ -884,7 +919,7 @@
           ${roadmapHTML}
         </div>
         <div class="dialog-section">
-          <h4>Next milestone</h4>
+          <h4>${project.paper ? "Research deliverable" : "Next milestone"}</h4>
           <p style="margin:0;color:var(--muted)">${escapeHTML(project.next)}</p>
           ${links ? `<div class="dialog-actions">${links}</div>` : ""}
         </div>
