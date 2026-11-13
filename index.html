@@ -85,6 +85,7 @@
     .project-top h3 { font-size: 1.5rem; line-height: 1.15; margin: 5px 0; }
     .project-kicker { font-size: .8rem; color: var(--muted); }
     .status { font-size: .72rem; color: var(--accent); white-space: nowrap; }
+    .project-preview { display: block; width: 100%; height: auto; border-radius: 12px; }
     .project-summary, .stage { color: var(--muted); margin: 0; }
     .tags { display: flex; flex-wrap: wrap; gap: 7px; }
     .tag { border: 1px solid var(--line); border-radius: 20px; padding: 4px 9px; color: var(--muted); font-size: .78rem; }
@@ -333,6 +334,18 @@
         plan: ["Collect feedback and choose a first design", "Make and test a prototype", "Adjust the parts based on results"]
       },
       {
+        title: "Heavy-Duty Textbook Stand", category: "Hardware", status: "CAD prototype", color: "#54beb6",
+        subtitle: "A screw-free stand for my physics textbook",
+        summary: "I wanted to read my physics textbook upright and turn pages without holding both covers open. I designed two angled cradles that join with two slide-in connector bars. A removable finger on each side holds the pages in place.",
+        stage: "CAD and printable files are available. Testing with an 8 lb book is still pending.",
+        tags: ["FreeCAD", "3D printing", "Mechanical design"],
+        image: "images/textbook-stand-v3.png",
+        imageAlt: "V3 assembly with two teal cradles joined by gray connector bars and a yellow page finger on each ledge",
+        details: ["I set the backrests at 70° and gave each page finger seven positions so it can move as the page stack changes thickness.", "In V3, I narrowed the inner frames and kept the cover supports wide. That reduced the modeled volume of each cradle by 49.6% compared with V2 while keeping the same bars and fingers."],
+        plan: ["Check the connector and page-finger fit on printed parts", "Load the stand in steps up to 8 lb and measure how far the ledges bend"],
+        link: "https://github.com/AdityaDave2008/heavy-duty-textbook-stand#readme", linkText: "View CAD and printable files"
+      },
+      {
         title: "KairoAI", category: "Software", status: "In progress", color: "#7c9cff",
         subtitle: "AI sports coaching idea",
         summary: "KairoAI is a sports coaching app idea I'm developing. I want it to give players feedback they can use when they practice.",
@@ -408,6 +421,7 @@
         const index = projects.indexOf(p);
         return `<article class="project-card" style="--project-color:${p.color}">
           <div class="project-top"><div><div class="project-kicker">${escapeHTML(p.subtitle)}</div><h3>${escapeHTML(p.title)}</h3></div><span class="status">${escapeHTML(p.status)}</span></div>
+          ${p.image ? `<img class="project-preview" src="${escapeHTML(p.image)}" alt="${escapeHTML(p.imageAlt)}" width="1110" height="510" loading="lazy">` : ""}
           <p class="project-summary">${escapeHTML(p.summary)}</p>
           <p class="stage">${escapeHTML(p.stage)}</p>
           <div class="tags">${p.tags.map(t => `<span class="tag">${escapeHTML(t)}</span>`).join("")}</div>
